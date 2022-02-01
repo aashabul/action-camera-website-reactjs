@@ -1,4 +1,4 @@
-import { Container, Grid, Typography } from "@mui/material";
+import { Button, Container, Grid, Typography } from "@mui/material";
 import React from "react";
 import TypewriterComponent from "typewriter-effect";
 import Roboto from "@fontsource/roboto/500.css";
@@ -53,7 +53,20 @@ const Banner = () => {
                   }}
                 />
               </Box>
+
+              <Box sx={{ mt: 2 }}>
+                <Button
+                  variant="contained"
+                  sx={{
+                    background: "#8C6897",
+                    boxShadow: "5px 10px 8px #525252",
+                  }}
+                >
+                  Explore
+                </Button>
+              </Box>
             </Grid>
+
             <Grid item md={6} xs={12} sx={{ my: 3 }}>
               <img
                 width="100%"
