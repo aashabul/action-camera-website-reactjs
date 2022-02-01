@@ -24,31 +24,51 @@ const Banner = () => {
             //   alignItems: "center",
             // }}
           >
-            <Grid item sx={{ lineHeight: "2rem", my: 3 }} md={6} xs={12}>
-              <Typography variant="h2">HERO 10</Typography>
+            <Grid
+              item
+              sx={{ lineHeight: "2rem", my: 3 }}
+              md={6}
+              sm={12}
+              xs={12}
+            >
+              <Typography
+                variant="h2"
+                sx={{
+                  textShadow: "4px 5px 8px #666666",
+                  WebkitTextFillColor: "#292929",
+                }}
+              >
+                HERO 10
+              </Typography>
               {/* <Typography variant="subtitle1">
               Faster. Smoother. Easier.
             </Typography> */}
               <Typography variant="h5" sx={{ color: "#525252" }}>
                 Sweet Savings. Limited time only.
               </Typography>
-              <Box sx={{ fontFamily: "Roboto", fontSize: "18px" }}>
+              <Box
+                sx={{
+                  fontFamily: "Roboto",
+                  fontSize: "1.4rem",
+                  color: "#474747",
+                }}
+              >
                 <TypewriterComponent
-                  options={{ loop: true }}
+                  options={{ loop: true, delay: 45 }}
                   onInit={(typewriter) => {
                     typewriter
                       .typeString(
                         "Capture every valuable moments of your life."
                       )
-                      .pauseFor(2000)
+                      .pauseFor(3000)
                       .deleteAll()
                       .typeString(
                         "Get the experience of the upcoming features."
                       )
-                      .pauseFor(2000)
+                      .pauseFor(3000)
                       .deleteAll()
-                      .typeString("Be a HERO.")
-                      .pauseFor(2000)
+                      .typeString("Be the HERO of your own world.")
+                      .pauseFor(3000)
                       .start();
                   }}
                 />
@@ -60,14 +80,17 @@ const Banner = () => {
                   sx={{
                     background: "#8C6897",
                     boxShadow: "5px 10px 8px #525252",
+                    fontWeight: 600,
+                    fontSize: "0.9rem",
+                    letterSpacing: 2,
                   }}
                 >
-                  Explore
+                  Explore shop
                 </Button>
               </Box>
             </Grid>
 
-            <Grid item md={6} xs={12} sx={{ my: 3 }}>
+            <Grid item md={6} sm={12} xs={12} sx={{ my: 3 }}>
               <img
                 width="100%"
                 height="100%"
