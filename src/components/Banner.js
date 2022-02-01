@@ -24,12 +24,12 @@ const Banner = () => {
             //   alignItems: "center",
             // }}
           >
-            <Grid item sx={{ lineHeight: "2rem" }} md={6}>
+            <Grid item sx={{ lineHeight: "2rem", my: 3 }} md={6} xs={12}>
               <Typography variant="h2">HERO 10</Typography>
               {/* <Typography variant="subtitle1">
               Faster. Smoother. Easier.
             </Typography> */}
-              <Typography variant="h5">
+              <Typography variant="h5" sx={{ color: "#525252" }}>
                 Sweet Savings. Limited time only.
               </Typography>
               <Box sx={{ fontFamily: "Roboto", fontSize: "18px" }}>
@@ -54,7 +54,7 @@ const Banner = () => {
                 />
               </Box>
             </Grid>
-            <Grid item md={6}>
+            <Grid item md={6} xs={12} sx={{ my: 3 }}>
               <img
                 width="100%"
                 height="100%"
