@@ -93,7 +93,7 @@ const Footer = () => {
           </Grid>
         </Grid>
 
-        <Typography variant="subtitle1" sx={{ mt: 4, textAlign: "center" }}>
+        <Typography variant="subtitle2" sx={{ mt: 4, textAlign: "center" }}>
           &copy; 2022 Aashabul Imam All Rights Reserved.
         </Typography>
       </Container>
