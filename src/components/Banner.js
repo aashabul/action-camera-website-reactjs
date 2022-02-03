@@ -17,13 +17,7 @@ const Banner = () => {
         }}
       >
         <Container>
-          <Grid
-            container
-            // sx={{
-            //   display: "flex",
-            //   alignItems: "center",
-            // }}
-          >
+          <Grid container>
             <Grid
               item
               sx={{ lineHeight: "2rem", my: 3 }}
@@ -36,13 +30,12 @@ const Banner = () => {
                 sx={{
                   textShadow: "4px 5px 8px #666666",
                   WebkitTextFillColor: "#292929",
+                  mb: 2,
                 }}
               >
                 HERO 10
               </Typography>
-              {/* <Typography variant="subtitle1">
-              Faster. Smoother. Easier.
-            </Typography> */}
+
               <Typography variant="h5" sx={{ color: "#525252" }}>
                 Sweet Savings. Limited time only.
               </Typography>
