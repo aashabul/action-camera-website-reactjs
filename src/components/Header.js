@@ -108,7 +108,7 @@ const Navigation = () => {
         >
           <img
             style={{ borderRadius: "50%", width: "30px" }}
-            src="https://cdn-icons.flaticon.com/png/512/3899/premium/3899618.png?token=exp=1643983176~hmac=973b8828102b645bb32e9cdce6d36db1"
+            src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
             alt="user"
           />
         </IconButton>

@@ -12,7 +12,7 @@ const Banner = () => {
           background: "#C29CCD",
           minHeight: "70vh",
           display: "flex",
-          justifyContent: "center",
+          // justifyContent: "center",
           alignItems: "center",
         }}
       >
@@ -83,10 +83,21 @@ const Banner = () => {
               </Box>
             </Grid>
 
-            <Grid item md={6} sm={12} xs={12} sx={{ my: 3 }}>
+            <Grid
+              item
+              md={6}
+              sm={12}
+              xs={12}
+              sx={{ my: 3 }}
+              sx={{
+                alignItems: "center",
+                justifyContent: "center",
+                display: "flex",
+              }}
+            >
               <img
                 width="100%"
-                height="100%"
+                // height="100%"
                 src="https://i.ibb.co/TBVyGNg/hp-hero6-product-desktop.png"
                 alt="gopro"
               />
