@@ -8,10 +8,8 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import MoreIcon from "@mui/icons-material/MoreVert";
 import { Button } from "@mui/material";
 import { Link, NavLink } from "react-router-dom";
-import Avatar from "@mui/material/Avatar";
 
 const Navigation = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
