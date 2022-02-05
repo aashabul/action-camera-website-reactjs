@@ -13,7 +13,7 @@ import {
 import { Link } from "react-router-dom";
 
 const Product = (props) => {
-  const { name, description, img } = props.product;
+  const { name, description, img, price } = props.product;
   return (
     <Grid
       item
@@ -32,6 +32,8 @@ const Product = (props) => {
             <Typography gutterBottom variant="h6" component="div">
               {name}
             </Typography>
+            <Typography variant="h6">price: $ {price}</Typography>
+            <Divider />
             <Typography variant="body2" color="text.secondary">
               Battery: {description.battery}
             </Typography>
