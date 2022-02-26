@@ -1,42 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Container, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import Header from "../components/Header";
 import useAuth from "../hooks/useAuth";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const Login = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  // const [url, setUrl] = useState();
-  const redirect_url = location.state?.from || "/";
-  console.log("came from", location.state?.from);
+const Register = () => {
   const {
     handleGoogleSignIn,
     handleGithubSignIn,
     handleFacebookSignin,
     handleEmail,
     handlePass,
-    handleLogin,
+    handleEmailPassSignIn,
     success,
     error,
   } = useAuth();
-
-  const googleSignIn = () => {
-    handleGoogleSignIn()
-      .then((result) => {
-        // const user = result.user;
-        // setRegistered(true);
-        navigate(redirect_url);
-        // setUrl(redirect_url);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // setError(errorMessage);
-      });
-  };
-
   return (
     <>
       <Header></Header>
@@ -58,7 +37,7 @@ const Login = () => {
             alignItems: "center",
           }}
         >
-          <form onSubmit={handleLogin}>
+          <form onSubmit={handleEmailPassSignIn}>
             <Box
               sx={{
                 mb: 5,
@@ -68,17 +47,24 @@ const Login = () => {
                 width: "30vw",
               }}
             >
-              <Typography>Please Login</Typography>
+              <Typography>Please Register</Typography>
+              {/* <TextField
+                required
+                id="outlined-required1"
+                label="Name"
+                name="name"
+                onBlur={handleName}
+              /> */}
               <TextField
                 required
-                id="outlined-required"
+                id="outlined-required2"
                 label="Email"
                 name="email"
                 onBlur={handleEmail}
               />
               <TextField
                 required
-                id="outlined-required"
+                id="outlined-required3"
                 label="Password"
                 name="password"
                 onBlur={handlePass}
@@ -96,23 +82,20 @@ const Login = () => {
             )}
             <Box>
               <Button type="submit" variant="contained">
-                Login
+                Register
               </Button>
             </Box>
           </form>
 
           <Box sx={{ mt: 5 }}>
-            <Button onClick={googleSignIn}>Google SignIn</Button>
+            <Button onClick={handleGoogleSignIn}>Google SignIn</Button>
 
             <Button onClick={handleGithubSignIn}>GitHub SignIn</Button>
 
             <Button onClick={handleFacebookSignin}>Facebook SignIn</Button>
           </Box>
-          <Link
-            to="/register"
-            style={{ textDecoration: "none", color: "blue" }}
-          >
-            New User? Register first.
+          <Link to="/login" style={{ textDecoration: "none", color: "blue" }}>
+            Already registered? Login
           </Link>
         </Box>
       </Container>
@@ -120,4 +103,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

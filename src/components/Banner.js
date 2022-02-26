@@ -3,6 +3,7 @@ import React from "react";
 import TypewriterComponent from "typewriter-effect";
 import Roboto from "@fontsource/roboto/500.css";
 import { Box } from "@mui/system";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
@@ -68,18 +69,20 @@ const Banner = () => {
               </Box>
 
               <Box sx={{ mt: 2 }}>
-                <Button
-                  variant="contained"
-                  sx={{
-                    background: "#8C6897",
-                    boxShadow: "5px 10px 8px #525252",
-                    fontWeight: 600,
-                    fontSize: "0.9rem",
-                    letterSpacing: 2,
-                  }}
-                >
-                  Explore shop
-                </Button>
+                <Link to="/explore" style={{ textDecoration: "none" }}>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      background: "#8C6897",
+                      boxShadow: "5px 10px 8px #525252",
+                      fontWeight: 600,
+                      fontSize: "0.9rem",
+                      letterSpacing: 2,
+                    }}
+                  >
+                    Explore shop
+                  </Button>
+                </Link>
               </Box>
             </Grid>
 

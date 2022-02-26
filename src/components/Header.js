@@ -10,8 +10,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { Button } from "@mui/material";
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const Navigation = () => {
+  const { user, handleSignOut } = useAuth();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -92,25 +94,38 @@ const Navigation = () => {
       </MenuItem>
 
       <MenuItem>
-        <Link to="/login" style={{ textDecoration: "none" }}>
-          <Button sx={{ color: "black" }}>Login</Button>
-        </Link>
+        {user.email ? (
+          <Button onClick={handleSignOut} sx={{ color: "black" }}>
+            LogOut
+          </Button>
+        ) : (
+          <Link to="/login" style={{ textDecoration: "none" }}>
+            <Button sx={{ color: "black" }}>Login</Button>
+          </Link>
+        )}
       </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <img
-            style={{ borderRadius: "50%", width: "30px" }}
-            src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
-            alt="user"
-          />
-        </IconButton>
-        <p>userName</p>
+
+      <MenuItem>
+        {/* onClick={handleProfileMenuOpen} */}
+        {user?.email ? (
+          <IconButton
+            size="large"
+            aria-label="account of current user"
+            aria-controls="primary-search-account-menu"
+            aria-haspopup="true"
+            color="inherit"
+          >
+            <img
+              style={{ borderRadius: "50%", width: "30px" }}
+              src={user.photoURL}
+              alt="user"
+            />
+          </IconButton>
+        ) : (
+          <></>
+        )}
+
+        {user?.email ? <p>{user.displayName}</p> : <></>}
       </MenuItem>
     </Menu>
   );
@@ -135,14 +150,16 @@ const Navigation = () => {
             textAlign: "center",
           }}
         >
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "block", sm: "block" } }}
-          >
-            Click Flick
-          </Typography>
+          <NavLink to="/" style={{ textDecoration: "none", color: "white" }}>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ display: { xs: "block", sm: "block" } }}
+            >
+              Click Flick
+            </Typography>
+          </NavLink>
 
           <Box sx={{ flexGrow: 1 }} />
 
@@ -159,9 +176,17 @@ const Navigation = () => {
                 <Button sx={{ color: "white" }}>Dashboard</Button>
               </NavLink>
 
-              <NavLink to="/login" style={{ textDecoration: "none" }}>
-                <Button sx={{ color: "white" }}>Login</Button>
-              </NavLink>
+              {user?.email ? (
+                <Button onClick={handleSignOut} sx={{ color: "white" }}>
+                  LogOut
+                </Button>
+              ) : (
+                <>
+                  <NavLink to="/login" style={{ textDecoration: "none" }}>
+                    <Button sx={{ color: "white" }}>Login</Button>
+                  </NavLink>
+                </>
+              )}
 
               <IconButton
                 size="large"
@@ -172,7 +197,23 @@ const Navigation = () => {
                 onClick={handleProfileMenuOpen}
                 color="inherit"
               >
-                <AccountCircle />
+                {user?.photoURL ? (
+                  <>
+                    <img
+                      style={{
+                        borderRadius: "50%",
+                        width: "30px",
+                      }}
+                      src={user.photoURL}
+                      alt="user"
+                    />
+                    <Typography sx={{ marginLeft: 1 }}>
+                      {user.displayName}
+                    </Typography>
+                  </>
+                ) : (
+                  <AccountCircle />
+                )}
               </IconButton>
             </Box>
           </Box>
