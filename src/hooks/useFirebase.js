@@ -6,6 +6,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   sendEmailVerification,
+  updateProfile,
   GoogleAuthProvider,
   GithubAuthProvider,
   FacebookAuthProvider,
@@ -17,8 +18,6 @@ initAuth();
 const useFirebase = () => {
   const auth = getAuth();
   const [user, setUser] = useState([]);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -28,8 +27,14 @@ const useFirebase = () => {
   const facebookProvider = new FacebookAuthProvider();
 
   //Create user with Email & Password
-  const handleEmailPassSignIn = (e) => {
-    e.preventDefault();
+  const signInWithEmailPassword = (
+    email,
+    password,
+    name,
+    navigate,
+    location
+  ) => {
+    setLoading(true);
     if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(password)) {
       setError(
         "password must be 6 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter"
@@ -39,19 +44,29 @@ const useFirebase = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        verifyEmail();
-
-        if (user.emailVerified === true) {
-          console.log(user);
-          setRegistered(true);
-        }
+        //
+        const newUser = { email, displayName: name };
+        setUser(newUser);
+        updateProfile(auth.currentUser, {
+          displayName: name,
+        })
+          .then(() => {
+            // Profile updated!
+            // ...
+          })
+          .catch((error) => {
+            // An error occurred
+            // ...
+          });
+        navigate(location);
       })
 
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         setError("You are already registered! please SignIN");
-      });
+      })
+      .finally(() => setLoading(false));
   };
 
   //seding Email Verification
@@ -80,18 +95,6 @@ const useFirebase = () => {
         setError(errorMessage);
       });
   };
-
-  // //catch emailId from Input field
-  // const handleEmail = (e) => {
-  //   let emailInput = e.target.value;
-  //   setEmail(emailInput);
-  // };
-
-  // //catch password from input field
-  // const handlePass = (e) => {
-  //   let passInput = e.target.value;
-  //   setPassword(passInput);
-  // };
 
   //SignIn with Google
   const signInWithGoogle = (location, navigate) => {
@@ -169,7 +172,7 @@ const useFirebase = () => {
   return {
     user,
     signInWithGoogle,
-    handleEmailPassSignIn,
+    signInWithEmailPassword,
     handleGithubSignIn,
     handleFacebookSignin,
     loginUser,

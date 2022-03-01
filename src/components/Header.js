@@ -107,7 +107,7 @@ const Navigation = () => {
 
       <MenuItem>
         {/* onClick={handleProfileMenuOpen} */}
-        {user?.email ? (
+        {user.photoURL ? (
           <IconButton
             size="large"
             aria-label="account of current user"
@@ -197,22 +197,22 @@ const Navigation = () => {
                 onClick={handleProfileMenuOpen}
                 color="inherit"
               >
-                {user?.photoURL ? (
-                  <>
-                    <img
-                      style={{
-                        borderRadius: "50%",
-                        width: "30px",
-                      }}
-                      src={user.photoURL}
-                      alt="user"
-                    />
-                    <Typography sx={{ marginLeft: 1 }}>
-                      {user.displayName}
-                    </Typography>
-                  </>
+                {user.photoURL ? (
+                  <img
+                    style={{
+                      borderRadius: "50%",
+                      width: "30px",
+                    }}
+                    src={user.photoURL}
+                    alt="user"
+                  />
                 ) : (
                   <AccountCircle />
+                )}
+                {user.email && (
+                  <Typography sx={{ marginLeft: 1 }}>
+                    {user.displayName}
+                  </Typography>
                 )}
               </IconButton>
             </Box>

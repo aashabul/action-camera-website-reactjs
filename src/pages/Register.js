@@ -1,22 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Container, Grid, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import Header from "../components/Header";
 import useAuth from "../hooks/useAuth";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 
 const Register = () => {
   const {
-    handleGoogleSignIn,
+    signInWithGoogle,
     handleGithubSignIn,
     handleFacebookSignin,
     handleEmail,
     handlePass,
-    handleEmailPassSignIn,
+    signInWithEmailPassword,
     success,
     error,
+    loading,
   } = useAuth();
+  const [loginData, setLoginData] = useState({});
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleOnBlur = (e) => {
+    const field = e.target.name;
+    const value = e.target.value;
+    const newLoginData = { ...loginData };
+    newLoginData[field] = value;
+    setLoginData(newLoginData);
+  };
+
+  const handleRegistration = (e) => {
+    e.preventDefault();
+    signInWithEmailPassword(
+      loginData.email,
+      loginData.password,
+      loginData.name,
+      navigate,
+      location
+    );
+  };
+
+  const handleGoogleSignIn = (e) => {
+    signInWithGoogle(location, navigate);
+  };
   return (
     <>
       <Header></Header>
@@ -31,17 +58,25 @@ const Register = () => {
       >
         <Grid container spacing={1}>
           <Grid item xs={12} md={7}>
-            <form onSubmit={handleEmailPassSignIn}>
+            <form onSubmit={handleRegistration}>
               <Typography variant="h5" sx={{ fontWeight: "600", mb: 3 }}>
                 Please Register
               </Typography>
               <TextField
                 sx={{ width: "60%", m: 1 }}
                 required
+                id="outlined-required1"
+                label="Name"
+                name="name"
+                onBlur={handleOnBlur}
+              />
+              <TextField
+                sx={{ width: "60%", m: 1 }}
+                required
                 id="outlined-required2"
                 label="Email"
                 name="email"
-                onBlur={handleEmail}
+                onBlur={handleOnBlur}
               />
               <TextField
                 sx={{ width: "60%", m: 1 }}
@@ -49,7 +84,7 @@ const Register = () => {
                 id="outlined-required3"
                 label="Password"
                 name="password"
-                onBlur={handlePass}
+                onBlur={handleOnBlur}
               />
 
               {error && (
