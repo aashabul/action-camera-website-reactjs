@@ -14,30 +14,28 @@ import Register from "./pages/Register";
 
 function App() {
   return (
-    <div>
-      <AuthProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route
-              path="/explore"
-              element={
-                <PrivateRoute>
-                  <Explore />
-                </PrivateRoute>
-              }
-            />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/purchase" element={<Purchase />} />
-            <Route path="/compare" element={<Compare />} />
-            <Route path="/wishlist" element={<Wishlist />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </AuthProvider>
-    </div>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/explore"
+            element={
+              <PrivateRoute>
+                <Explore />
+              </PrivateRoute>
+            }
+          />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/purchase" element={<Purchase />} />
+          <Route path="/compare" element={<Compare />} />
+          <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

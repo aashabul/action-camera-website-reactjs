@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { Button, Container, TextField, Typography } from "@mui/material";
+import { Button, Container, TextField, Typography, Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import useAuth from "../hooks/useAuth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  // const [isLoading, setIsLoading] = useState(false);
   // const [url, setUrl] = useState();
   const redirect_url = location.state?.from || "/";
   console.log("came from", location.state?.from);
@@ -23,6 +25,7 @@ const Login = () => {
   } = useAuth();
 
   const googleSignIn = () => {
+    // setIsLoading(true);
     handleGoogleSignIn()
       .then((result) => {
         // const user = result.user;
@@ -35,6 +38,7 @@ const Login = () => {
         const errorMessage = error.message;
         // setError(errorMessage);
       });
+    // .finally(() => setIsLoading(false));
   };
 
   return (
@@ -43,33 +47,20 @@ const Login = () => {
       <Container
         sx={{
           textAlign: "center",
-          minHeight: "80vh",
+          height: "90vh",
+          width: "100vw",
           display: "flex",
-          justifyContent: "center",
           alignItems: "center",
         }}
       >
-        <Box
-          width="100vw"
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <form onSubmit={handleLogin}>
-            <Box
-              sx={{
-                mb: 5,
-                display: "flex",
-                flexDirection: "column",
-                gap: 3,
-                width: "30vw",
-              }}
-            >
-              <Typography>Please Login</Typography>
+        <Grid container spacing={1}>
+          <Grid item xs={12} md={7}>
+            <form onSubmit={handleLogin}>
+              <Typography variant="h5" sx={{ fontWeight: "600", mb: 3 }}>
+                Please Login
+              </Typography>
               <TextField
+                sx={{ width: "60%", m: 1 }}
                 required
                 id="outlined-required"
                 label="Email"
@@ -77,45 +68,105 @@ const Login = () => {
                 onBlur={handleEmail}
               />
               <TextField
+                sx={{ width: "60%", m: 1 }}
                 required
                 id="outlined-required"
                 label="Password"
                 name="password"
                 onBlur={handlePass}
               />
-            </Box>
-            {error && (
-              <Typography variant="subtitle1" sx={{ color: "red" }}>
-                {error}
+
+              {error && (
+                <Typography variant="subtitle1" sx={{ color: "red" }}>
+                  {error}
+                </Typography>
+              )}
+              {success && (
+                <Typography variant="subtitle1" sx={{ color: "green" }}>
+                  {success}
+                </Typography>
+              )}
+              <Box>
+                <Button
+                  sx={{ backgroundColor: "#8C6897", px: 5, py: 1, mt: 1 }}
+                  type="submit"
+                  variant="contained"
+                >
+                  Login
+                </Button>
+              </Box>
+            </form>
+            <Link
+              to="/register"
+              style={{
+                textDecoration: "none",
+              }}
+            >
+              <Typography sx={{ my: 2 }}>
+                New User? Register first -&gt;
               </Typography>
-            )}
-            {success && (
-              <Typography variant="subtitle1" sx={{ color: "green" }}>
-                {success}
+            </Link>
+          </Grid>
+
+          <Grid item xs={12} md={5}>
+            <Box
+              sx={{
+                display: "flex",
+                width: "100%",
+                flexDirection: "column",
+                textAlign: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Typography variant="h5" sx={{ fontWeight: "600", mb: 3 }}>
+                Or sign in with
               </Typography>
-            )}
-            <Box>
-              <Button type="submit" variant="contained">
-                Login
+              <Button
+                sx={{
+                  my: 1,
+                  backgroundColor: "#EA4335",
+                  width: "50%",
+                  py: 1.5,
+                  alignSelf: "center",
+                }}
+                variant="contained"
+                onClick={googleSignIn}
+              >
+                Google SignIn
+              </Button>
+
+              <Button
+                sx={{
+                  my: 1,
+                  py: 1.5,
+                  backgroundColor: "#000000",
+                  width: "50%",
+                  alignSelf: "center",
+                }}
+                variant="contained"
+                onClick={handleGithubSignIn}
+              >
+                GitHub SignIn
+              </Button>
+
+              <Button
+                sx={{
+                  my: 1,
+                  backgroundColor: "#4064AC",
+                  py: 1.5,
+                  width: "50%",
+                  alignSelf: "center",
+                }}
+                variant="contained"
+                onClick={handleFacebookSignin}
+              >
+                Facebook SignIn
               </Button>
             </Box>
-          </form>
-
-          <Box sx={{ mt: 5 }}>
-            <Button onClick={googleSignIn}>Google SignIn</Button>
-
-            <Button onClick={handleGithubSignIn}>GitHub SignIn</Button>
-
-            <Button onClick={handleFacebookSignin}>Facebook SignIn</Button>
-          </Box>
-          <Link
-            to="/register"
-            style={{ textDecoration: "none", color: "blue" }}
-          >
-            New User? Register first.
-          </Link>
-        </Box>
+          </Grid>
+        </Grid>
       </Container>
+      <Footer />
     </>
   );
 };

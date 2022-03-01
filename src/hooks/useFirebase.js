@@ -16,18 +16,15 @@ import {
 initAuth();
 const useFirebase = () => {
   const auth = getAuth();
-
-  const googleProvider = new GoogleAuthProvider();
-  const githubProvider = new GithubAuthProvider();
-  const facebookProvider = new FacebookAuthProvider();
-
   const [user, setUser] = useState([]);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [registered, setRegistered] = useState(false);
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
+  const facebookProvider = new FacebookAuthProvider();
 
   //Create user with Email & Password
   const handleEmailPassSignIn = (e) => {
@@ -138,21 +135,22 @@ const useFirebase = () => {
       });
   };
 
-  //saves user state globally
+  //saves user state globally/ observes user's state
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // const uid = user.uid;
         // console.log("inside changed", user);
         setUser(user);
+      } else {
+        setUser({});
       }
     });
-    return unsubscribe;
+    return () => unsubscribe;
   }, []);
 
   return {
     user,
-
     handleGoogleSignIn,
     handleEmailPassSignIn,
     handleGithubSignIn,
