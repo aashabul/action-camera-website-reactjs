@@ -102,7 +102,7 @@ const Login = () => {
                 textDecoration: "none",
               }}
             >
-              <Typography sx={{ my: 2 }}>
+              <Typography sx={{ my: 2, color: "#551A8B" }}>
                 New User? Register first -&gt;
               </Typography>
             </Link>
