@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Product from "../components/Product";
 import HashLoader from "react-spinners/HashLoader";
 import { Box } from "@mui/system";
+import Loading from "../components/IsLoading";
 
 const Explore = () => {
   const [products, setProducts] = useState([]);
@@ -12,29 +13,20 @@ const Explore = () => {
 
   useEffect(() => {
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1500);
+    // setTimeout(() => {
+    //   setLoading(false);
+    // }, 3000);
     fetch("products.json")
       .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((data) => setProducts(data))
+      .finally(() => setLoading(false));
   }, []);
   return (
     <div>
       <Header />
       <Container sx={{ my: 7 }}>
         {loading ? (
-          <Box
-            sx={{
-              height: "30vh",
-              width: "100%",
-              display: "flex",
-              justifyContent: "center",
-              pt: "20%",
-            }}
-          >
-            <HashLoader color="#8C6897" loading={loading} size={100} />
-          </Box>
+          <Loading />
         ) : (
           <Grid container spacing={{ md: 2, xs: 3, lg: 3 }}>
             {products.map((product, index) => (

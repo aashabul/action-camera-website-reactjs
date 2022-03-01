@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Button, Container, TextField, Typography, Grid } from "@mui/material";
+import {
+  Button,
+  Container,
+  TextField,
+  Typography,
+  Grid,
+  CircularProgress,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -9,36 +16,35 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [url, setUrl] = useState();
-  const redirect_url = location.state?.from || "/";
-  console.log("came from", location.state?.from);
+
+  // console.log("came from", location.state?.from);
   const {
-    handleGoogleSignIn,
+    signInWithGoogle,
     handleGithubSignIn,
     handleFacebookSignin,
-    handleEmail,
-    handlePass,
-    handleLogin,
+    loading,
+    loginUser,
     success,
     error,
   } = useAuth();
 
-  const googleSignIn = () => {
-    // setIsLoading(true);
-    handleGoogleSignIn()
-      .then((result) => {
-        // const user = result.user;
-        // setRegistered(true);
-        navigate(redirect_url);
-        // setUrl(redirect_url);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // setError(errorMessage);
-      });
-    // .finally(() => setIsLoading(false));
+  const [loginData, setLoginData] = useState({});
+
+  const handleOnBlur = (e) => {
+    const field = e.target.name;
+    const value = e.target.value;
+    const newLoginData = { ...loginData };
+    newLoginData[field] = value;
+    setLoginData(newLoginData);
+    console.log(newLoginData);
+  };
+  const handleLoginSubmit = (e) => {
+    loginUser(loginData.email, loginData.password, location, navigate);
+    e.preventDefault();
+  };
+
+  const handleGoogleSignIn = (e) => {
+    signInWithGoogle(location, navigate);
   };
 
   return (
@@ -55,7 +61,7 @@ const Login = () => {
       >
         <Grid container spacing={1}>
           <Grid item xs={12} md={7}>
-            <form onSubmit={handleLogin}>
+            <form onSubmit={handleLoginSubmit}>
               <Typography variant="h5" sx={{ fontWeight: "600", mb: 3 }}>
                 Please Login
               </Typography>
@@ -65,7 +71,7 @@ const Login = () => {
                 id="outlined-required"
                 label="Email"
                 name="email"
-                onBlur={handleEmail}
+                onBlur={handleOnBlur}
               />
               <TextField
                 sx={{ width: "60%", m: 1 }}
@@ -73,7 +79,7 @@ const Login = () => {
                 id="outlined-required"
                 label="Password"
                 name="password"
-                onBlur={handlePass}
+                onBlur={handleOnBlur}
               />
 
               {error && (
@@ -96,6 +102,11 @@ const Login = () => {
                 </Button>
               </Box>
             </form>
+            {loading && (
+              <Box sx={{ display: "flex" }}>
+                <CircularProgress />
+              </Box>
+            )}
             <Link
               to="/register"
               style={{
@@ -130,7 +141,7 @@ const Login = () => {
                   alignSelf: "center",
                 }}
                 variant="contained"
-                onClick={googleSignIn}
+                onClick={handleGoogleSignIn}
               >
                 Google SignIn
               </Button>

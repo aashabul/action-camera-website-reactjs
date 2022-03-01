@@ -1,7 +1,8 @@
 import React from "react";
+import IsLoading from "../components/IsLoading";
 
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return <IsLoading />;
 };
 
 export default Dashboard;

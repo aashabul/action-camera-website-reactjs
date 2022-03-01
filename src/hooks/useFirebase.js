@@ -19,6 +19,7 @@ const useFirebase = () => {
   const [user, setUser] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [registered, setRegistered] = useState(false);
@@ -61,14 +62,15 @@ const useFirebase = () => {
   };
 
   //Login with Email & Password
-  const handleLogin = (e) => {
-    e.preventDefault();
+  const loginUser = (email, password, location, navigate) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
-        setUser(user);
-        console.log(user);
-        console.log("loggedin user: ", user.email);
+        // const user = userCredential.user;
+        // setUser(user);
+        // console.log(user);
+        // console.log("loggedin user: ", user.email);
+        const destination = location?.state?.from || "/";
+        navigate(destination);
         setSuccess("Successfully LoggedIN");
       })
       .catch((error) => {
@@ -79,21 +81,35 @@ const useFirebase = () => {
       });
   };
 
-  //catch emailId from Input field
-  const handleEmail = (e) => {
-    let emailInput = e.target.value;
-    setEmail(emailInput);
-  };
+  // //catch emailId from Input field
+  // const handleEmail = (e) => {
+  //   let emailInput = e.target.value;
+  //   setEmail(emailInput);
+  // };
 
-  //catch password from input field
-  const handlePass = (e) => {
-    let passInput = e.target.value;
-    setPassword(passInput);
-  };
+  // //catch password from input field
+  // const handlePass = (e) => {
+  //   let passInput = e.target.value;
+  //   setPassword(passInput);
+  // };
 
   //SignIn with Google
-  const handleGoogleSignIn = () => {
-    return signInWithPopup(auth, googleProvider);
+  const signInWithGoogle = (location, navigate) => {
+    setLoading(true);
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        // const user = result.user;
+        // setRegistered(true);
+        const destination = location?.state?.from || "/";
+        navigate(destination);
+        // setUrl(redirect_url);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // setError(errorMessage);
+      })
+      .finally(() => setLoading(false));
   };
 
   //signIn with Github
@@ -145,23 +161,25 @@ const useFirebase = () => {
       } else {
         setUser({});
       }
+      setLoading(false);
     });
     return () => unsubscribe;
   }, []);
 
   return {
     user,
-    handleGoogleSignIn,
+    signInWithGoogle,
     handleEmailPassSignIn,
     handleGithubSignIn,
     handleFacebookSignin,
-    handleLogin,
-    handleEmail,
-    handlePass,
+    loginUser,
+    // handleEmail,
+    // handlePass,
     handleSignOut,
     registered,
     error,
     success,
+    loading,
   };
 };
 
