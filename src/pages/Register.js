@@ -11,8 +11,6 @@ const Register = () => {
     signInWithGoogle,
     handleGithubSignIn,
     handleFacebookSignin,
-    handleEmail,
-    handlePass,
     signInWithEmailPassword,
     success,
     error,
@@ -50,7 +48,7 @@ const Register = () => {
       <Container
         sx={{
           textAlign: "center",
-          height: "90vh",
+          minHeight: "90vh",
           width: "100vw",
           display: "flex",
           alignItems: "center",

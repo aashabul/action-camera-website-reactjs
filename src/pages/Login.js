@@ -20,8 +20,8 @@ const Login = () => {
   // console.log("came from", location.state?.from);
   const {
     signInWithGoogle,
-    handleGithubSignIn,
-    handleFacebookSignin,
+    signInWithGithub,
+    signInWithFacebook,
     loading,
     loginUser,
     success,
@@ -47,13 +47,20 @@ const Login = () => {
     signInWithGoogle(location, navigate);
   };
 
+  const handleGithubSignIn = (e) => {
+    signInWithGithub(location, navigate);
+  };
+
+  const handleFacebookSignin = (e) => {
+    signInWithFacebook(location, navigate);
+  };
   return (
     <>
       <Header></Header>
       <Container
         sx={{
           textAlign: "center",
-          height: "90vh",
+          minHeight: "90vh",
           width: "100vw",
           display: "flex",
           alignItems: "center",

@@ -116,11 +116,13 @@ const useFirebase = () => {
   };
 
   //signIn with Github
-  const handleGithubSignIn = () => {
+  const signInWithGithub = (location, navigate) => {
     signInWithPopup(auth, githubProvider)
       .then((result) => {
-        const user = result.user;
-        setUser(user);
+        // const user = result.user;
+        // setUser(user);
+        const destination = location?.state?.from || "/";
+        navigate(destination);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -130,11 +132,13 @@ const useFirebase = () => {
   };
 
   //signIn with Facebook
-  const handleFacebookSignin = () => {
+  const signInWithFacebook = (location, navigate) => {
     signInWithPopup(auth, facebookProvider)
       .then((result) => {
-        const user = result.user;
-        setUser(user);
+        // const user = result.user;
+        // setUser(user);
+        const destination = location?.state?.from || "/";
+        navigate(destination);
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -173,8 +177,8 @@ const useFirebase = () => {
     user,
     signInWithGoogle,
     signInWithEmailPassword,
-    handleGithubSignIn,
-    handleFacebookSignin,
+    signInWithGithub,
+    signInWithFacebook,
     loginUser,
     // handleEmail,
     // handlePass,
