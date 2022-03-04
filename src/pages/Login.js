@@ -72,6 +72,17 @@ const Login = () => {
               <Typography variant="h5" sx={{ fontWeight: "600", mb: 3 }}>
                 Please Login
               </Typography>
+              {loading && (
+                <Box
+                  sx={{
+                    display: "flex",
+                    width: "100%",
+                    justifyContent: "center",
+                  }}
+                >
+                  <CircularProgress />
+                </Box>
+              )}
               <TextField
                 sx={{ width: "60%", m: 1 }}
                 required
@@ -109,11 +120,7 @@ const Login = () => {
                 </Button>
               </Box>
             </form>
-            {loading && (
-              <Box sx={{ display: "flex" }}>
-                <CircularProgress />
-              </Box>
-            )}
+
             <Link
               to="/register"
               style={{

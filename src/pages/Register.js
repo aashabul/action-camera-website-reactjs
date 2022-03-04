@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Button, Container, Grid, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  Container,
+  Grid,
+  TextField,
+  Typography,
+  CircularProgress,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import Header from "../components/Header";
 import useAuth from "../hooks/useAuth";
@@ -60,6 +67,17 @@ const Register = () => {
               <Typography variant="h5" sx={{ fontWeight: "600", mb: 3 }}>
                 Please Register
               </Typography>
+              {loading && (
+                <Box
+                  sx={{
+                    display: "flex",
+                    width: "100%",
+                    justifyContent: "center",
+                  }}
+                >
+                  <CircularProgress />
+                </Box>
+              )}
               <TextField
                 sx={{ width: "60%", m: 1 }}
                 required
