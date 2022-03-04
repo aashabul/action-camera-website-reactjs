@@ -13,7 +13,10 @@ const Reviews = () => {
   }, []);
 
   return (
-    <Container>
+    <Container sx={{ my: 5 }}>
+      <Typography variant="h5" sx={{ textAlign: "center", mb: 3 }}>
+        Customer Reviews
+      </Typography>
       <Box>
         <Box
           sx={{
