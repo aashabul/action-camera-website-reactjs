@@ -1,6 +1,7 @@
 import { Card, CardContent, Container, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Rating from "@mui/material/Rating";
+import { Box } from "@mui/system";
 
 const Reviews = () => {
   const [info, setInfo] = useState([]);
@@ -13,28 +14,50 @@ const Reviews = () => {
 
   return (
     <Container>
-      <Grid container spacing={{ md: 2, xs: 3, lg: 3 }}>
-        <Grid
-          item
-          // lg={2.5}
-          // md={4}
-          // sm={5}
-          // xs={10}
-          // columns={{ lg: 10, md: 12, sm: 10, xs: 10 }}
-          sx={{ display: "flex", justifyContent: "center" }}
+      <Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            gap: 2,
+            justifyContent: "center",
+          }}
         >
           {info.map((review, index) => (
             <Card key={index}>
               <CardContent>
-                <Typography variant="body1">{review.name}</Typography>
-                <Typography variant="caption">{review.email}</Typography>
-                <Typography variant="h6">{review.comment}</Typography>
-                <Rating name="simple-controlled" value={review.star} readOnly />
+                <Box sx={{ display: "flex" }}>
+                  <Box sx={{ alignSelf: "center" }}>
+                    <img
+                      style={{ borderRadius: "50%", width: "45px" }}
+                      src={review.image}
+                      alt="user"
+                    />
+                  </Box>
+                  <Box sx={{ display: "flex", flexDirection: "column" }}>
+                    <Typography variant="body1">{review.name}</Typography>
+                    <Typography variant="body2">{review.email}</Typography>
+                  </Box>
+                </Box>
+                <Box sx={{ mt: 1 }}>
+                  <Rating
+                    name="simple-controlled"
+                    value={review.star}
+                    readOnly
+                    sx={{ display: "flex", justifyContent: "center" }}
+                  />
+                  <Typography
+                    variant="h6"
+                    sx={{ display: "flex", justifyContent: "center" }}
+                  >
+                    <cite>{review.comment}</cite>
+                  </Typography>
+                </Box>
               </CardContent>
             </Card>
           ))}
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
     </Container>
   );
 };

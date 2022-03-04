@@ -87,11 +87,13 @@ const Navigation = () => {
         </Link>
       </MenuItem>
 
-      <MenuItem>
-        <Link to="/dashboard" style={{ textDecoration: "none" }}>
-          <Button sx={{ color: "black" }}>Dashboard</Button>
-        </Link>
-      </MenuItem>
+      {user.email && (
+        <MenuItem>
+          <Link to="/dashboard" style={{ textDecoration: "none" }}>
+            <Button sx={{ color: "black" }}>Dashboard</Button>
+          </Link>
+        </MenuItem>
+      )}
 
       <MenuItem>
         {user.email ? (
@@ -172,9 +174,11 @@ const Navigation = () => {
                 <Button sx={{ color: "white" }}>Explore</Button>
               </NavLink>
 
-              <NavLink to="/dashboard" style={{ textDecoration: "none" }}>
-                <Button sx={{ color: "white" }}>Dashboard</Button>
-              </NavLink>
+              {user.email && (
+                <NavLink to="/dashboard" style={{ textDecoration: "none" }}>
+                  <Button sx={{ color: "white" }}>Dashboard</Button>
+                </NavLink>
+              )}
 
               {user?.email ? (
                 <Button onClick={handleSignOut} sx={{ color: "white" }}>

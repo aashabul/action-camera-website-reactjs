@@ -16,6 +16,7 @@ const Explore = () => {
   const commentRef = useRef();
   const nameRef = useRef();
   const emailRef = useRef();
+  const imageRef = useRef();
   let [value, setValue] = useState(0);
 
   useEffect(() => {
@@ -36,7 +37,14 @@ const Explore = () => {
 
     const name = nameRef.current.value;
     const email = emailRef.current.value;
-    const info = { comment: comment, star: value, name: name, email: email };
+    const image = imageRef.current.value;
+    const info = {
+      comment: comment,
+      star: value,
+      name: name,
+      email: email,
+      image: image,
+    };
     fetch("http://localhost:5000/reviews", {
       method: "POST",
       headers: {
@@ -81,6 +89,7 @@ const Explore = () => {
                 defaultValue={user.email}
                 disabled
               />
+              <input type="text" ref={imageRef} defaultValue={user.photoURL} />
               <Rating
                 name="simple-controlled"
                 value={value}
