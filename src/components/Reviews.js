@@ -2,6 +2,7 @@ import { Card, CardContent, Container, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Rating from "@mui/material/Rating";
 import { Box } from "@mui/system";
+import AccountCircle from "@mui/icons-material/AccountCircle";
 
 const Reviews = () => {
   const [info, setInfo] = useState([]);
@@ -17,25 +18,29 @@ const Reviews = () => {
       <Typography variant="h5" sx={{ textAlign: "center", mb: 3 }}>
         Customer Reviews
       </Typography>
-      <Box>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            gap: 2,
-            justifyContent: "center",
-          }}
-        >
-          {info.map((review, index) => (
-            <Card key={index}>
-              <CardContent>
-                <Box sx={{ display: "flex" }}>
+      <Grid container gap={2}>
+        {info.map((review, index) => (
+          <Grid key={index} item md={3.8} sm={12} xs={12}>
+            <Card key={index} sx={{ alignSelf: "center" }}>
+              <CardContent
+                sx={{
+                  minHeight: "28vh",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                }}
+              >
+                <Box sx={{ display: "flex", gap: 1, justifyContent: "center" }}>
                   <Box sx={{ alignSelf: "center" }}>
-                    <img
-                      style={{ borderRadius: "50%", width: "45px" }}
-                      src={review.image}
-                      alt="user"
-                    />
+                    {review.image ? (
+                      <img
+                        style={{ borderRadius: "50%", width: "45px" }}
+                        src={review.image}
+                        alt="user"
+                      />
+                    ) : (
+                      <AccountCircle />
+                    )}
                   </Box>
                   <Box sx={{ display: "flex", flexDirection: "column" }}>
                     <Typography variant="body1">{review.name}</Typography>
@@ -43,24 +48,28 @@ const Reviews = () => {
                   </Box>
                 </Box>
                 <Box sx={{ mt: 1 }}>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <cite>"{review.comment}"</cite>
+                  </Typography>
+
                   <Rating
                     name="simple-controlled"
                     value={review.star}
                     readOnly
                     sx={{ display: "flex", justifyContent: "center" }}
                   />
-                  <Typography
-                    variant="h6"
-                    sx={{ display: "flex", justifyContent: "center" }}
-                  >
-                    <cite>{review.comment}</cite>
-                  </Typography>
                 </Box>
               </CardContent>
             </Card>
-          ))}
-        </Box>
-      </Box>
+          </Grid>
+        ))}
+      </Grid>
     </Container>
   );
 };
