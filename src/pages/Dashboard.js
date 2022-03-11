@@ -16,6 +16,11 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ReviewsIcon from "@mui/icons-material/Reviews";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import HomeIcon from "@mui/icons-material/Home";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const drawerWidth = 240;
 
@@ -38,26 +43,36 @@ function Dashboard(props) {
       <Divider />
       <List>
         <ListItem button>
-          <ListItemIcon></ListItemIcon>
-          <ListItemText>My Orders</ListItemText>
+          <ListItemIcon>
+            <ShoppingCartIcon sx={{ ml: 2 }} />
+          </ListItemIcon>
+          <ListItemText>My Cart</ListItemText>
         </ListItem>
         <ListItem button>
-          <ListItemIcon></ListItemIcon>
+          <ListItemIcon>
+            <ReviewsIcon sx={{ ml: 2 }} />
+          </ListItemIcon>
           <ListItemText>My Reviews</ListItemText>
         </ListItem>
         <ListItem button>
-          <ListItemIcon></ListItemIcon>
+          <ListItemIcon>
+            <FavoriteIcon sx={{ ml: 2 }} />
+          </ListItemIcon>
           <ListItemText>My Wishlist</ListItemText>
         </ListItem>
       </List>
       <Divider />
       <List>
         <ListItem button onClick={handleHome}>
-          <ListItemIcon></ListItemIcon>
+          <ListItemIcon>
+            <HomeIcon sx={{ ml: 2 }} />
+          </ListItemIcon>
           <ListItemText>Home</ListItemText>
         </ListItem>
         <ListItem button>
-          <ListItemIcon></ListItemIcon>
+          <ListItemIcon>
+            <LogoutIcon sx={{ ml: 2 }} />
+          </ListItemIcon>
           <ListItemText>Logout</ListItemText>
         </ListItem>
       </List>
