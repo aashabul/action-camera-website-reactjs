@@ -20,6 +20,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ReviewsIcon from "@mui/icons-material/Reviews";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import HomeIcon from "@mui/icons-material/Home";
+import RateReviewIcon from "@mui/icons-material/RateReview";
 import LogoutIcon from "@mui/icons-material/Logout";
 import useAuth from "../hooks/useAuth";
 
@@ -44,6 +45,9 @@ function Dashboard(props) {
   const handleReview = () => {
     navigate("/myReviews");
   };
+  const handleAddReview = () => {
+    navigate("/addReview");
+  };
   const handleWishlist = () => {
     navigate("/myWishlist");
   };
@@ -60,13 +64,19 @@ function Dashboard(props) {
           <ListItemIcon>
             <ShoppingCartIcon sx={{ ml: 2 }} />
           </ListItemIcon>
-          <ListItemText>My Cart</ListItemText>
+          <ListItemText>Cart</ListItemText>
         </ListItem>
         <ListItem button onClick={handleReview}>
           <ListItemIcon>
             <ReviewsIcon sx={{ ml: 2 }} />
           </ListItemIcon>
           <ListItemText>My Reviews</ListItemText>
+        </ListItem>
+        <ListItem button onClick={handleAddReview}>
+          <ListItemIcon>
+            <RateReviewIcon sx={{ ml: 2 }} />
+          </ListItemIcon>
+          <ListItemText>Add Review</ListItemText>
         </ListItem>
         <ListItem button onClick={handleWishlist}>
           <ListItemIcon>
