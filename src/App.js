@@ -11,6 +11,7 @@ import Purchase from "./pages/Purchase";
 import Wishlist from "./pages/Wishlist";
 import PrivateRoute from "./components/PrivateRoute";
 import Register from "./pages/Register";
+import AddReview from "./components/AddReview";
 
 function App() {
   return (
@@ -26,7 +27,23 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/addReview"
+            element={
+              <PrivateRoute>
+                <AddReview />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/purchase" element={<Purchase />} />

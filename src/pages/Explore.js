@@ -30,37 +30,37 @@ const Explore = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  const handleAddReview = (e) => {
-    e.preventDefault();
-    const comment = commentRef.current.value;
-    // const star = value;
+  // const handleAddReview = (e) => {
+  //   e.preventDefault();
+  //   const comment = commentRef.current.value;
+  //   // const star = value;
 
-    const name = nameRef.current.value;
-    const email = emailRef.current.value;
-    const image = imageRef.current.value;
-    const info = {
-      comment: comment,
-      star: value,
-      name: name,
-      email: email,
-      image: image,
-    };
-    fetch("http://localhost:5000/reviews", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(info),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        const addedReview = data;
-        console.log(addedReview);
-        const newReview = [...review, addedReview];
-        setReview(newReview);
-      });
-    commentRef.current.value = "";
-  };
+  //   const name = nameRef.current.value;
+  //   const email = emailRef.current.value;
+  //   const image = imageRef.current.value;
+  //   const info = {
+  //     comment: comment,
+  //     star: value,
+  //     name: name,
+  //     email: email,
+  //     image: image,
+  //   };
+  //   fetch("http://localhost:5000/reviews", {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(info),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       const addedReview = data;
+  //       console.log(addedReview);
+  //       const newReview = [...review, addedReview];
+  //       setReview(newReview);
+  //     });
+  //   commentRef.current.value = "";
+  // };
 
   return (
     <div>
@@ -70,7 +70,7 @@ const Explore = () => {
           <Loading />
         ) : (
           <>
-            <form onSubmit={handleAddReview}>
+            {/* <form onSubmit={handleAddReview}>
               <textarea
                 ref={commentRef}
                 cols="30"
@@ -97,11 +97,10 @@ const Explore = () => {
                   setValue(newValue);
                 }}
               />
-              {/* <input ref={starRef} type="number" /> */}
               <Button type="submit" variant="contained">
                 Submit
               </Button>
-            </form>
+            </form> */}
 
             <Grid container spacing={{ md: 2, xs: 3, lg: 3 }}>
               {products.map((product, index) => (

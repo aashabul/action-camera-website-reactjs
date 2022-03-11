@@ -39,7 +39,6 @@ const Footer = () => {
             md={3}
             sm={6}
             xs={12}
-            sx={{ my: 2 }}
             sx={{ my: 2, display: "flex", justifyContent: "center" }}
           >
             <Box>
@@ -58,7 +57,6 @@ const Footer = () => {
             md={3}
             sm={6}
             xs={12}
-            sx={{ my: 2 }}
             sx={{ my: 2, display: "flex", justifyContent: "center" }}
           >
             <Box>
@@ -79,7 +77,6 @@ const Footer = () => {
             md={3}
             sm={6}
             xs={12}
-            sx={{ my: 2 }}
             sx={{ my: 2, display: "flex", justifyContent: "center" }}
           >
             <Box>
