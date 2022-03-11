@@ -12,8 +12,9 @@ import Wishlist from "./pages/Wishlist";
 import PrivateRoute from "./components/PrivateRoute";
 import Register from "./pages/Register";
 import AddReview from "./components/AddReview";
-import MyOrders from "./components/MyOrders";
+import MyCart from "./components/MyCart";
 import MyReviews from "./components/MyReviews";
+import MyWishlist from "./components/MyWishlist";
 
 function App() {
   return (
@@ -46,10 +47,10 @@ function App() {
             }
           />
           <Route
-            path="/myOrders"
+            path="/myCart"
             element={
               <PrivateRoute>
-                <MyOrders />
+                <MyCart />
               </PrivateRoute>
             }
           />
@@ -58,6 +59,14 @@ function App() {
             element={
               <PrivateRoute>
                 <MyReviews />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/myWishlist"
+            element={
+              <PrivateRoute>
+                <MyWishlist />
               </PrivateRoute>
             }
           />

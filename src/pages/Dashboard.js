@@ -21,10 +21,12 @@ import ReviewsIcon from "@mui/icons-material/Reviews";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import HomeIcon from "@mui/icons-material/Home";
 import LogoutIcon from "@mui/icons-material/Logout";
+import useAuth from "../hooks/useAuth";
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
+  const { handleSignOut } = useAuth();
   const navigate = useNavigate();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -36,25 +38,37 @@ function Dashboard(props) {
   const handleHome = () => {
     navigate("/");
   };
+  const handleCart = () => {
+    navigate("/myCart");
+  };
+  const handleReview = () => {
+    navigate("/myReviews");
+  };
+  const handleWishlist = () => {
+    navigate("/myWishlist");
+  };
+  const handleLogout = () => {
+    handleSignOut();
+  };
 
   const drawer = (
     <div>
       <Toolbar />
       <Divider />
       <List>
-        <ListItem button>
+        <ListItem button onClick={handleCart}>
           <ListItemIcon>
             <ShoppingCartIcon sx={{ ml: 2 }} />
           </ListItemIcon>
           <ListItemText>My Cart</ListItemText>
         </ListItem>
-        <ListItem button>
+        <ListItem button onClick={handleReview}>
           <ListItemIcon>
             <ReviewsIcon sx={{ ml: 2 }} />
           </ListItemIcon>
           <ListItemText>My Reviews</ListItemText>
         </ListItem>
-        <ListItem button>
+        <ListItem button onClick={handleWishlist}>
           <ListItemIcon>
             <FavoriteIcon sx={{ ml: 2 }} />
           </ListItemIcon>
@@ -69,7 +83,7 @@ function Dashboard(props) {
           </ListItemIcon>
           <ListItemText>Home</ListItemText>
         </ListItem>
-        <ListItem button>
+        <ListItem button onClick={handleLogout}>
           <ListItemIcon>
             <LogoutIcon sx={{ ml: 2 }} />
           </ListItemIcon>
