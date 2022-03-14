@@ -39,7 +39,7 @@ const Reviews = () => {
                         alt="user"
                       />
                     ) : (
-                      <AccountCircle />
+                      <AccountCircle fontSize="large" />
                     )}
                   </Box>
                   <Box sx={{ display: "flex", flexDirection: "column" }}>

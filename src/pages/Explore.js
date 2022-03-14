@@ -70,38 +70,6 @@ const Explore = () => {
           <Loading />
         ) : (
           <>
-            {/* <form onSubmit={handleAddReview}>
-              <textarea
-                ref={commentRef}
-                cols="30"
-                rows="10"
-                placeholder="write review"
-              ></textarea>
-              <input
-                ref={nameRef}
-                type="text"
-                defaultValue={user.displayName}
-                disabled
-              />
-              <input
-                ref={emailRef}
-                type="email"
-                defaultValue={user.email}
-                disabled
-              />
-              <input type="text" ref={imageRef} defaultValue={user.photoURL} />
-              <Rating
-                name="simple-controlled"
-                value={value}
-                onChange={(event, newValue) => {
-                  setValue(newValue);
-                }}
-              />
-              <Button type="submit" variant="contained">
-                Submit
-              </Button>
-            </form> */}
-
             <Grid container spacing={{ md: 2, xs: 3, lg: 3 }}>
               {products.map((product, index) => (
                 <Product key={index} product={product}></Product>

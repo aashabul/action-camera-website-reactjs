@@ -11,6 +11,10 @@ import {
   Grid,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import Tooltip from "@mui/material/Tooltip";
 
 const Product = (props) => {
   const { name, description, img, price } = props.product;
@@ -51,20 +55,44 @@ const Product = (props) => {
         <Divider />
         <CardActions sx={{ display: "flex", justifyContent: "center" }}>
           <Link to="/purchase" style={{ textDecoration: "none" }}>
-            <Button size="small" color="primary">
-              Purchase
-            </Button>
+            <Tooltip title="add to cart">
+              <Button
+                variant="contained"
+                size="small"
+                color="primary"
+                sx={{ background: "#8C6897" }}
+              >
+                <AddShoppingCartIcon />
+              </Button>
+            </Tooltip>
           </Link>
 
           <Link to="/compare" style={{ textDecoration: "none" }}>
-            <Button size="small" color="primary">
-              Compare
-            </Button>
+            <Tooltip title="compare">
+              <Button
+                variant="contained"
+                size="small"
+                color="primary"
+                sx={{ background: "#B4A7B7" }}
+              >
+                <CompareArrowsIcon />
+              </Button>
+            </Tooltip>
           </Link>
           <Link to="/wishlist" style={{ textDecoration: "none" }}>
-            <Button size="small" color="primary">
-              +Wishlist
-            </Button>
+            <Tooltip title="add to wishlist">
+              <Button
+                variant="contained"
+                size="small"
+                color="primary"
+                sx={{
+                  "&:hover": { backgroundColor: "#8C6897" },
+                  background: "#4E4351",
+                }}
+              >
+                <FavoriteBorderIcon />
+              </Button>
+            </Tooltip>
           </Link>
         </CardActions>
         <Divider />
