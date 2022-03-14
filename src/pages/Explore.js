@@ -1,4 +1,4 @@
-import { Container, Grid, Button } from "@mui/material";
+import { Container, Grid, Button, Typography } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -66,11 +66,17 @@ const Explore = () => {
     <div>
       <Header />
       <Container sx={{ my: 7 }}>
+        <Typography
+          variant="h4"
+          sx={{ mb: 7, color: "#4E4351", textAlign: "center" }}
+        >
+          Choose The Best Cameras
+        </Typography>
         {loading ? (
           <Loading />
         ) : (
           <>
-            <Grid container spacing={{ md: 2, xs: 3, lg: 3 }}>
+            <Grid container spacing={{ md: 2, xs: 3, lg: 6 }}>
               {products.map((product, index) => (
                 <Product key={index} product={product}></Product>
               ))}

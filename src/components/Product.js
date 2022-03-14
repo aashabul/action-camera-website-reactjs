@@ -15,6 +15,7 @@ import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Tooltip from "@mui/material/Tooltip";
+import { Box } from "@mui/system";
 
 const Product = (props) => {
   const { name, description, img, price } = props.product;
@@ -32,24 +33,30 @@ const Product = (props) => {
         <CardActionArea>
           <CardMedia component="img" height="140" image={img} alt={name} />
           <Divider />
-          <CardContent>
+          <CardContent
+            sx={{
+              minHeight: "22vh",
+            }}
+          >
             <Typography gutterBottom variant="h6" component="div">
               {name}
             </Typography>
             <Typography variant="h6">price: $ {price}</Typography>
             <Divider />
-            <Typography variant="body2" color="text.secondary">
-              Battery: {description.battery}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Screen: {description.screen}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Camera: {description.camera}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Color: {description.color}
-            </Typography>
+            <Box>
+              <Typography variant="body2" color="text.secondary">
+                Battery: {description.battery}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Screen: {description.screen}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Camera: {description.camera}
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                Color: {description.color}
+              </Typography>
+            </Box>
           </CardContent>
         </CardActionArea>
         <Divider />
