@@ -5,7 +5,6 @@ import useAuth from "../hooks/useAuth";
 
 const AddReview = () => {
   const { user } = useAuth();
-  //   const [review, setReview] = useState([]);
   const commentRef = useRef();
   const nameRef = useRef();
   const emailRef = useRef();
@@ -15,8 +14,6 @@ const AddReview = () => {
   const handleAddReview = (e) => {
     e.preventDefault();
     const comment = commentRef.current.value;
-    // const star = value;
-
     const name = nameRef.current.value;
     const email = emailRef.current.value;
     const image = imageRef.current.value;
@@ -40,10 +37,6 @@ const AddReview = () => {
           alert("successfully added a review");
           e.target.reset();
         }
-        // const addedReview = data;
-        // console.log(addedReview);
-        // const newReview = [...review, addedReview];
-        // setReview(newReview);
       });
     commentRef.current.value = "";
   };

@@ -33,11 +33,7 @@ const Product = (props) => {
         <CardActionArea>
           <CardMedia component="img" height="140" image={img} alt={name} />
           <Divider />
-          <CardContent
-            sx={{
-              minHeight: "22vh",
-            }}
-          >
+          <CardContent>
             <Typography gutterBottom variant="h6" component="div">
               {name}
             </Typography>

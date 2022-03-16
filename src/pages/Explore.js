@@ -1,23 +1,15 @@
-import { Container, Grid, Button, Typography } from "@mui/material";
-import React, { useEffect, useRef, useState } from "react";
+import { Container, Grid, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Product from "../components/Product";
 import Loading from "../components/IsLoading";
-import { Box } from "@mui/system";
 import useAuth from "../hooks/useAuth";
-import Rating from "@mui/material/Rating";
 
 const Explore = () => {
   const { user } = useAuth();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [review, setReview] = useState([]);
-  const commentRef = useRef();
-  const nameRef = useRef();
-  const emailRef = useRef();
-  const imageRef = useRef();
-  let [value, setValue] = useState(0);
 
   useEffect(() => {
     setLoading(true);
@@ -30,37 +22,15 @@ const Explore = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  // const handleAddReview = (e) => {
-  //   e.preventDefault();
-  //   const comment = commentRef.current.value;
-  //   // const star = value;
-
-  //   const name = nameRef.current.value;
-  //   const email = emailRef.current.value;
-  //   const image = imageRef.current.value;
-  //   const info = {
-  //     comment: comment,
-  //     star: value,
-  //     name: name,
-  //     email: email,
-  //     image: image,
-  //   };
-  //   fetch("http://localhost:5000/reviews", {
+  // const handleAddtocart = id =>{
+  //   fetch("http://localhost:5000/cart",{
   //     method: "POST",
-  //     headers: {
+  //     headers:{
   //       "content-type": "application/json",
   //     },
-  //     body: JSON.stringify(info),
+  //     body: JSON.stringify()
   //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       const addedReview = data;
-  //       console.log(addedReview);
-  //       const newReview = [...review, addedReview];
-  //       setReview(newReview);
-  //     });
-  //   commentRef.current.value = "";
-  // };
+  // }
 
   return (
     <div>
@@ -68,7 +38,7 @@ const Explore = () => {
       <Container sx={{ my: 7 }}>
         <Typography
           variant="h4"
-          sx={{ mb: 7, color: "#4E4351", textAlign: "center" }}
+          sx={{ mb: 7, color: "#4E4351", textAlign: "center", fontWeight: 600 }}
         >
           Choose The Best Cameras
         </Typography>
