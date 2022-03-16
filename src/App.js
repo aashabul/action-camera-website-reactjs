@@ -15,6 +15,7 @@ import AddReview from "./components/AddReview";
 import MyCart from "./components/MyCart";
 import MyReviews from "./components/MyReviews";
 import MyWishlist from "./components/MyWishlist";
+import Details from "./pages/Details";
 
 function App() {
   return (
@@ -27,6 +28,14 @@ function App() {
             element={
               <PrivateRoute>
                 <Explore />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/details/:id"
+            element={
+              <PrivateRoute>
+                <Details />
               </PrivateRoute>
             }
           />
@@ -47,7 +56,7 @@ function App() {
             }
           />
           <Route
-            path="/myCart"
+            path="/cart"
             element={
               <PrivateRoute>
                 <MyCart />
@@ -73,7 +82,7 @@ function App() {
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/purchase" element={<Purchase />} />
+          {/* <Route path="/purchase" element={<Purchase />} /> */}
           <Route path="/compare" element={<Compare />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="*" element={<NotFound />} />

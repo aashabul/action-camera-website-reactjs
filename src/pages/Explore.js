@@ -37,7 +37,7 @@ const Explore = () => {
       <Header />
       <Container sx={{ my: 7 }}>
         <Typography
-          variant="h4"
+          variant="h5"
           sx={{ mb: 7, color: "#4E4351", textAlign: "center", fontWeight: 600 }}
         >
           Choose The Best Cameras

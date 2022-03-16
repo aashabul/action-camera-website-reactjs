@@ -10,7 +10,7 @@ import {
   Divider,
   Grid,
 } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
@@ -18,7 +18,13 @@ import Tooltip from "@mui/material/Tooltip";
 import { Box } from "@mui/system";
 
 const Product = (props) => {
-  const { name, description, img, price } = props.product;
+  const { name, description, img, price, _id } = props.product;
+  const navigate = useNavigate();
+
+  const handleDetails = (id) => {
+    navigate(`/details/${id}`);
+  };
+
   return (
     <Grid
       item
@@ -30,7 +36,7 @@ const Product = (props) => {
       sx={{ display: "flex", justifyContent: "center" }}
     >
       <Card sx={{ maxWidth: 300, maxHeight: 470 }}>
-        <CardActionArea>
+        <CardActionArea onClick={() => handleDetails(_id)}>
           <CardMedia component="img" height="140" image={img} alt={name} />
           <Divider />
           <CardContent>
@@ -57,46 +63,41 @@ const Product = (props) => {
         </CardActionArea>
         <Divider />
         <CardActions sx={{ display: "flex", justifyContent: "center" }}>
-          <Link to="/purchase" style={{ textDecoration: "none" }}>
-            <Tooltip title="add to cart">
-              <Button
-                variant="contained"
-                size="small"
-                color="primary"
-                sx={{ background: "#8C6897" }}
-              >
-                <AddShoppingCartIcon />
-              </Button>
-            </Tooltip>
-          </Link>
+          <Tooltip title="add to cart">
+            <Button
+              variant="contained"
+              size="small"
+              color="primary"
+              sx={{ background: "#8C6897" }}
+            >
+              <AddShoppingCartIcon />
+            </Button>
+          </Tooltip>
 
-          <Link to="/compare" style={{ textDecoration: "none" }}>
-            <Tooltip title="compare">
-              <Button
-                variant="contained"
-                size="small"
-                color="primary"
-                sx={{ background: "#B4A7B7" }}
-              >
-                <CompareArrowsIcon />
-              </Button>
-            </Tooltip>
-          </Link>
-          <Link to="/wishlist" style={{ textDecoration: "none" }}>
-            <Tooltip title="add to wishlist">
-              <Button
-                variant="contained"
-                size="small"
-                color="primary"
-                sx={{
-                  "&:hover": { backgroundColor: "#8C6897" },
-                  background: "#4E4351",
-                }}
-              >
-                <FavoriteBorderIcon />
-              </Button>
-            </Tooltip>
-          </Link>
+          <Tooltip title="compare">
+            <Button
+              variant="contained"
+              size="small"
+              color="primary"
+              sx={{ background: "#B4A7B7" }}
+            >
+              <CompareArrowsIcon />
+            </Button>
+          </Tooltip>
+
+          <Tooltip title="add to wishlist">
+            <Button
+              variant="contained"
+              size="small"
+              color="primary"
+              sx={{
+                "&:hover": { backgroundColor: "#8C6897" },
+                background: "#4E4351",
+              }}
+            >
+              <FavoriteBorderIcon />
+            </Button>
+          </Tooltip>
         </CardActions>
         <Divider />
       </Card>
