@@ -40,10 +40,17 @@ const Product = (props) => {
           <CardMedia component="img" height="140" image={img} alt={name} />
           <Divider />
           <CardContent>
-            <Typography gutterBottom variant="h6" component="div">
-              {name}
-            </Typography>
-            <Typography variant="h6">price: $ {price}</Typography>
+            <Box sx={{ mb: 1 }}>
+              <Typography gutterBottom variant="h6" component="div">
+                {name}
+              </Typography>
+              <Typography variant="h6">
+                Price:{" "}
+                <span style={{ color: "green", fontWeight: 600 }}>
+                  $ {price}
+                </span>
+              </Typography>
+            </Box>
             <Divider />
             <Box>
               <Typography variant="body2" color="text.secondary">
