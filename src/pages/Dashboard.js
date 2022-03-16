@@ -13,14 +13,18 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ReviewsIcon from "@mui/icons-material/Reviews";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import HomeIcon from "@mui/icons-material/Home";
+import ExploreIcon from "@mui/icons-material/Explore";
 import RateReviewIcon from "@mui/icons-material/RateReview";
 import LogoutIcon from "@mui/icons-material/Logout";
 import useAuth from "../hooks/useAuth";
+import MyCart from "../components/MyCart";
+import MyReviews from "../components/MyReviews";
+import AddReview from "../components/AddReview";
 
 const drawerWidth = 240;
 
@@ -37,17 +41,20 @@ function Dashboard(props) {
   const handleHome = () => {
     navigate("/");
   };
+  const handleExplore = () => {
+    navigate("/explore");
+  };
   const handleCart = () => {
-    navigate("/myCart");
+    navigate("/dashboard/cart");
   };
   const handleReview = () => {
-    navigate("/myReviews");
+    navigate("/dashboard/myReviews");
   };
   const handleAddReview = () => {
-    navigate("/addReview");
+    navigate("/dashboard/addReview");
   };
   const handleWishlist = () => {
-    navigate("/myWishlist");
+    navigate("/dashboard/myWishlist");
   };
   const handleLogout = () => {
     handleSignOut();
@@ -64,12 +71,14 @@ function Dashboard(props) {
           </ListItemIcon>
           <ListItemText>Cart</ListItemText>
         </ListItem>
+
         <ListItem button onClick={handleReview}>
           <ListItemIcon>
             <ReviewsIcon sx={{ ml: 2 }} />
           </ListItemIcon>
           <ListItemText>My Reviews</ListItemText>
         </ListItem>
+
         <ListItem button onClick={handleAddReview}>
           <ListItemIcon>
             <RateReviewIcon sx={{ ml: 2 }} />
@@ -90,6 +99,12 @@ function Dashboard(props) {
             <HomeIcon sx={{ ml: 2 }} />
           </ListItemIcon>
           <ListItemText>Home</ListItemText>
+        </ListItem>
+        <ListItem button onClick={handleExplore}>
+          <ListItemIcon>
+            <ExploreIcon sx={{ ml: 2 }} />
+          </ListItemIcon>
+          <ListItemText>Explore</ListItemText>
         </ListItem>
         <ListItem button onClick={handleLogout}>
           <ListItemIcon>
@@ -177,35 +192,7 @@ function Dashboard(props) {
         }}
       >
         <Toolbar />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
-          dolor purus non enim praesent elementum facilisis leo vel. Risus at
-          ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum
-          quisque non tellus. Convallis convallis tellus id interdum velit
-          laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-          adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-          integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
-          eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-          quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
-          vivamus at augue. At augue eget arcu dictum varius duis at consectetur
-          lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-          faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-          ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
-          elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
-          sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
-          mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis
-          risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas
-          purus viverra accumsan in. In hendrerit gravida rutrum quisque non
-          tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant
-          morbi tristique senectus et. Adipiscing elit duis tristique
-          sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
+        <Outlet />
       </Box>
     </Box>
   );

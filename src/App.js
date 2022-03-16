@@ -39,14 +39,15 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route
-            path="/addReview"
+
+          {/* <Route
+            path="/dashboard/*"
             element={
               <PrivateRoute>
-                <AddReview />
+                <MyCart />
               </PrivateRoute>
             }
-          />
+          /> */}
           <Route
             path="/dashboard"
             element={
@@ -54,35 +55,51 @@ function App() {
                 <Dashboard />
               </PrivateRoute>
             }
-          />
-          <Route
-            path="/cart"
-            element={
-              <PrivateRoute>
-                <MyCart />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/myReviews"
-            element={
-              <PrivateRoute>
-                <MyReviews />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/myWishlist"
-            element={
-              <PrivateRoute>
-                <MyWishlist />
-              </PrivateRoute>
-            }
-          />
+          >
+            <Route
+              path="/dashboard"
+              element={
+                <PrivateRoute>
+                  <MyCart />
+                </PrivateRoute>
+              }
+            ></Route>
+            <Route
+              path="cart"
+              element={
+                <PrivateRoute>
+                  <MyCart />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="myReviews"
+              element={
+                <PrivateRoute>
+                  <MyReviews />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="addReview"
+              element={
+                <PrivateRoute>
+                  <AddReview />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="myWishlist"
+              element={
+                <PrivateRoute>
+                  <MyWishlist />
+                </PrivateRoute>
+              }
+            />
+          </Route>
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          {/* <Route path="/purchase" element={<Purchase />} /> */}
           <Route path="/compare" element={<Compare />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="*" element={<NotFound />} />
