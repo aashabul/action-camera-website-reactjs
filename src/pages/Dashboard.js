@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -13,7 +12,7 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ReviewsIcon from "@mui/icons-material/Reviews";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -22,9 +21,6 @@ import ExploreIcon from "@mui/icons-material/Explore";
 import RateReviewIcon from "@mui/icons-material/RateReview";
 import LogoutIcon from "@mui/icons-material/Logout";
 import useAuth from "../hooks/useAuth";
-import MyCart from "../components/MyCart";
-import MyReviews from "../components/MyReviews";
-import AddReview from "../components/AddReview";
 
 const drawerWidth = 240;
 
@@ -197,13 +193,5 @@ function Dashboard(props) {
     </Box>
   );
 }
-
-Dashboard.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-  window: PropTypes.func,
-};
 
 export default Dashboard;

@@ -10,7 +10,7 @@ import {
   Divider,
   Grid,
 } from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import CompareArrowsIcon from "@mui/icons-material/CompareArrows";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";

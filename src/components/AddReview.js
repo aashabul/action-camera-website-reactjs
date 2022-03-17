@@ -9,7 +9,18 @@ const AddReview = () => {
   const nameRef = useRef();
   const emailRef = useRef();
   const imageRef = useRef();
+
   let [value, setValue] = useState(0);
+  const date = new Date();
+
+  const yyyy = date.getFullYear();
+  let mm = date.getMonth() + 1; // Months start at 0!
+  let dd = date.getDate();
+
+  if (dd < 10) dd = "0" + dd;
+  if (mm < 10) mm = "0" + mm;
+
+  const currentDate = dd + "/" + mm + "/" + yyyy;
 
   const handleAddReview = (e) => {
     e.preventDefault();
@@ -17,12 +28,14 @@ const AddReview = () => {
     const name = nameRef.current.value;
     const email = emailRef.current.value;
     const image = imageRef.current.value;
+
     const info = {
       comment: comment,
       star: value,
       name: name,
       email: email,
       image: image,
+      date: currentDate,
     };
     fetch("http://localhost:5000/reviews", {
       method: "POST",
@@ -58,6 +71,7 @@ const AddReview = () => {
         />
         <input ref={emailRef} type="email" defaultValue={user.email} disabled />
         <input type="text" ref={imageRef} defaultValue={user.photoURL} />
+        <input type="text" defaultValue={currentDate} disabled />
         <Rating
           name="simple-controlled"
           value={value}

@@ -40,14 +40,6 @@ function App() {
             }
           />
 
-          {/* <Route
-            path="/dashboard/*"
-            element={
-              <PrivateRoute>
-                <MyCart />
-              </PrivateRoute>
-            }
-          /> */}
           <Route
             path="/dashboard"
             element={

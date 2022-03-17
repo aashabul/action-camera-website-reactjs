@@ -47,23 +47,42 @@ const Reviews = () => {
                     <Typography variant="body2">{review.email}</Typography>
                   </Box>
                 </Box>
-                <Box sx={{ mt: 1 }}>
+
+                <Box sx={{ mt: 2 }}>
                   <Typography
-                    variant="h6"
+                    // variant="h6"
                     sx={{
                       display: "flex",
                       justifyContent: "center",
+                      fontWeight: 600,
+                      fontSize: "18px",
                     }}
                   >
                     <cite>"{review.comment}"</cite>
                   </Typography>
 
-                  <Rating
-                    name="simple-controlled"
-                    value={review.star}
-                    readOnly
-                    sx={{ display: "flex", justifyContent: "center" }}
-                  />
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      gap: 1,
+                      my: 1,
+                    }}
+                  >
+                    <Box>
+                      <Rating
+                        name="simple-controlled"
+                        value={review.star}
+                        readOnly
+                      />
+                    </Box>
+                    <Box>
+                      <Typography>(Rated {review.star} star)</Typography>
+                    </Box>
+                  </Box>
+                  <Typography sx={{ textAlign: "center" }}>
+                    Date: {review.date}
+                  </Typography>
                 </Box>
               </CardContent>
             </Card>
