@@ -4,10 +4,8 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Product from "../components/Product";
 import Loading from "../components/IsLoading";
-import useAuth from "../hooks/useAuth";
 
 const Explore = () => {
-  const { user } = useAuth();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -21,16 +19,6 @@ const Explore = () => {
       .then((data) => setProducts(data))
       .finally(() => setLoading(false));
   }, []);
-
-  // const handleAddtocart = id =>{
-  //   fetch("http://localhost:5000/cart",{
-  //     method: "POST",
-  //     headers:{
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify()
-  //   })
-  // }
 
   return (
     <div>

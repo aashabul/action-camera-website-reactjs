@@ -15,9 +15,7 @@ const MyReviews = () => {
       .then((data) =>
         setReviews(data.filter((review) => review.email === user.email))
       );
-  }, []);
-
-  // const myReviews = reviews.filter((review) => review.email === user.email);
+  }, [user.email]);
 
   return (
     <div>

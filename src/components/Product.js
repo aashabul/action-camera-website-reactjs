@@ -16,13 +16,50 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Tooltip from "@mui/material/Tooltip";
 import { Box } from "@mui/system";
+import useAuth from "../hooks/useAuth";
 
 const Product = (props) => {
+  const { user } = useAuth();
   const { name, description, img, price, _id } = props.product;
   const navigate = useNavigate();
 
   const handleDetails = (id) => {
     navigate(`/details/${id}`);
+  };
+
+  const handleAddtoCart = (e) => {
+    const cart = {
+      email: user.email,
+      img: img,
+      name: name,
+      price: price,
+      camera: description.camera,
+      video: description.video,
+      liveStreaming: description.liveStreaming,
+      mediaType: description.mediaType,
+      inputOutput: description.inputOutput,
+      exterlCard: description.externalCard,
+      viewAngle: description.viewAngle,
+      workingTime: description.workingTime,
+      battery: description.battery,
+      weight: description.weight,
+      color: description.color,
+      wifi: description.wiFi,
+      remote: description.remote,
+    };
+    fetch("http://localhost:5000/cart", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(cart),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          alert("successfully added to cart");
+        }
+      });
   };
 
   return (
@@ -72,6 +109,7 @@ const Product = (props) => {
         <CardActions sx={{ display: "flex", justifyContent: "center" }}>
           <Tooltip title="add to cart">
             <Button
+              onClick={handleAddtoCart}
               variant="contained"
               size="small"
               color="primary"
