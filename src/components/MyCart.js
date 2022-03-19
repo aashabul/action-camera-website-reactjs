@@ -8,9 +8,11 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import { IconButton, Tooltip } from "@mui/material";
+import { Button, IconButton, Tooltip } from "@mui/material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 const MyCart = () => {
   const { user } = useAuth();
@@ -23,6 +25,16 @@ const MyCart = () => {
         setCart(data.filter((cart) => cart.email === user.email))
       );
   }, [user.email]);
+
+  //counts total price from cart array
+  const showTotalPrice = () => {
+    let total = 0;
+    for (let i = 0; i < cart.length; i++) {
+      total = total + cart[i].price;
+    }
+    return total;
+  };
+  showTotalPrice();
 
   const handleAddWishlist = (e) => {
     console.log("added to wishlist");
@@ -42,6 +54,11 @@ const MyCart = () => {
         Confirm Order{" "}
         <span style={{ color: "green" }}>({cart.length} Items)</span>
       </Typography>
+      <Typography variant="h5" sx={{ textAlign: "center" }}>
+        total Price{" "}
+        <span style={{ color: "green" }}>($ {showTotalPrice()} )</span>
+      </Typography>
+
       {cart.map((cart, index) => (
         <List
           key={index}
@@ -68,6 +85,15 @@ const MyCart = () => {
                   >
                     price: $ {cart.price}
                   </Typography>
+                  <>
+                    <IconButton>
+                      <AddIcon />
+                    </IconButton>
+                    <input type="number" style={{ width: "50px" }} />
+                    <IconButton>
+                      <RemoveIcon />
+                    </IconButton>
+                  </>
                   <Typography
                     sx={{ display: "block" }}
                     component="span"
@@ -77,7 +103,7 @@ const MyCart = () => {
                     color: {cart.color}
                   </Typography>
                   <>
-                    <Tooltip title="continue to shipping">
+                    <Tooltip title="add to wishlist">
                       <IconButton sx={{ mr: 5 }} onClick={handleAddWishlist}>
                         <FavoriteBorderIcon />
                       </IconButton>
