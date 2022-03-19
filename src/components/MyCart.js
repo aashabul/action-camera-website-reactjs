@@ -1,4 +1,3 @@
-import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import List from "@mui/material/List";
@@ -8,7 +7,7 @@ import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
-import { Button, IconButton, Tooltip } from "@mui/material";
+import { IconButton, Tooltip } from "@mui/material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AddIcon from "@mui/icons-material/Add";
@@ -38,10 +37,6 @@ const MyCart = () => {
 
   const handleAddWishlist = (e) => {
     console.log("added to wishlist");
-  };
-
-  const handleConfirmOrder = (e) => {
-    console.log("order confirmed");
   };
 
   //delete order

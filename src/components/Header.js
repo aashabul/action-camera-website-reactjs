@@ -15,11 +15,8 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LogoutIcon from "@mui/icons-material/Logout";
 
 const Navigation = () => {
-  const { user, handleSignOut } = useAuth();
   const [cart, setCart] = useState([]);
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const { user, handleSignOut } = useAuth();
 
   useEffect(() => {
     fetch("http://localhost:5000/cart")
@@ -27,7 +24,10 @@ const Navigation = () => {
       .then((data) =>
         setCart(data.filter((cart) => cart.email === user.email))
       );
-  }, []);
+  });
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -211,7 +211,7 @@ const Navigation = () => {
                         fontSize: "14px",
                       }}
                     >
-                      {cart.length}
+                      {cart?.length}
                     </Typography>
                   </Button>
                 </NavLink>
