@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -11,11 +11,22 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import { Button } from "@mui/material";
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const Navigation = () => {
   const { user, handleSignOut } = useAuth();
+  const [cart, setCart] = useState([]);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/cart")
+      .then((res) => res.json())
+      .then((data) =>
+        setCart(data.filter((cart) => cart.email === user.email))
+      );
+  }, []);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -180,8 +191,37 @@ const Navigation = () => {
                 </NavLink>
               )}
 
+              {user.email && (
+                <NavLink
+                  to="/dashboard/cart"
+                  style={{ textDecoration: "none" }}
+                >
+                  <Button sx={{ color: "white" }}>
+                    <ShoppingCartIcon fontSize="small" />
+                    <Typography
+                      sx={{
+                        background: "white",
+                        color: "black",
+                        borderRadius: "50px",
+                        width: "1.3rem",
+                        height: "1.3rem",
+                        ml: 0.5,
+                        fontWeight: 600,
+                        fontSize: "14px",
+                      }}
+                    >
+                      {cart.length}
+                    </Typography>
+                  </Button>
+                </NavLink>
+              )}
+
               {user?.email ? (
-                <Button onClick={handleSignOut} sx={{ color: "white" }}>
+                <Button
+                  onClick={handleSignOut}
+                  sx={{ color: "white", gap: 0.5 }}
+                >
+                  <LogoutIcon fontSize="small" />
                   LogOut
                 </Button>
               ) : (
