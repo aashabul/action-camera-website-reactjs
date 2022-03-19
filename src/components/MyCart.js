@@ -44,8 +44,19 @@ const MyCart = () => {
     console.log("order confirmed");
   };
 
-  const handleDeleteOrder = (e) => {
-    console.log("order deleted from cart");
+  //delete order
+  const handleDeleteOrder = (id) => {
+    fetch(`http://localhost:5000/cart/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          alert("deleted successfully");
+          const newData = cart.filter((item) => item._id !== id);
+          setCart(newData);
+        }
+      });
   };
 
   return (
@@ -109,7 +120,7 @@ const MyCart = () => {
                       </IconButton>
                     </Tooltip>
                     <Tooltip title="delete from cart">
-                      <IconButton onClick={handleDeleteOrder}>
+                      <IconButton onClick={() => handleDeleteOrder(cart._id)}>
                         <DeleteForeverIcon />
                       </IconButton>
                     </Tooltip>

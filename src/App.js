@@ -7,7 +7,6 @@ import Explore from "./pages/Explore";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
-import Purchase from "./pages/Purchase";
 import Wishlist from "./pages/Wishlist";
 import PrivateRoute from "./components/PrivateRoute";
 import Register from "./pages/Register";
@@ -64,6 +63,15 @@ function App() {
                 </PrivateRoute>
               }
             />
+            <Route
+              path="cart/:id"
+              element={
+                <PrivateRoute>
+                  <MyCart />
+                </PrivateRoute>
+              }
+            />
+
             <Route
               path="myReviews"
               element={

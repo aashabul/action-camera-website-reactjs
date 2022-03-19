@@ -17,6 +17,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 const Navigation = () => {
   const { user, handleSignOut } = useAuth();
   const [cart, setCart] = useState([]);
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 

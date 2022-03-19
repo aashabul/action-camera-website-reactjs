@@ -21,6 +21,7 @@ import useAuth from "../hooks/useAuth";
 const Product = (props) => {
   const { user } = useAuth();
   const { name, description, img, price, _id } = props.product;
+
   const navigate = useNavigate();
 
   const handleDetails = (id) => {
