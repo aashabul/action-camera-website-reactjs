@@ -15,15 +15,22 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LogoutIcon from "@mui/icons-material/Logout";
 
 const Navigation = () => {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(0);
   const { user, handleSignOut } = useAuth();
 
   useEffect(() => {
+    let isMount = true;
     fetch("http://localhost:5000/cart")
       .then((res) => res.json())
-      .then((data) =>
-        setCart(data.filter((cart) => cart.email === user.email))
-      );
+      .then((data) => {
+        if (isMount) {
+          let result = data.filter((cart) => cart.email === user.email);
+          setCart(result.length);
+        }
+      });
+    return () => {
+      isMount = false;
+    };
   });
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -211,7 +218,7 @@ const Navigation = () => {
                         fontSize: "14px",
                       }}
                     >
-                      {cart?.length}
+                      {cart}
                     </Typography>
                   </Button>
                 </NavLink>
