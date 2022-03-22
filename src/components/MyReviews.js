@@ -10,11 +10,17 @@ const MyReviews = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
+    let isMount = true;
     fetch(`http://localhost:5000/reviews`)
       .then((res) => res.json())
-      .then((data) =>
-        setReviews(data.filter((review) => review.email === user.email))
-      );
+      .then((data) => {
+        if (isMount) {
+          setReviews(data.filter((review) => review.email === user.email));
+        }
+      });
+    return () => {
+      isMount = false;
+    };
   }, [user.email]);
 
   return (

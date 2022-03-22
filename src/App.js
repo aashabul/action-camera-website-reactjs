@@ -7,7 +7,6 @@ import Explore from "./pages/Explore";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
-import Wishlist from "./pages/Wishlist";
 import PrivateRoute from "./components/PrivateRoute";
 import Register from "./pages/Register";
 import AddReview from "./components/AddReview";
@@ -101,7 +100,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/compare" element={<Compare />} />
-          <Route path="/wishlist" element={<Wishlist />} />
+          <Route path="/wishlist" element={<MyWishlist />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
