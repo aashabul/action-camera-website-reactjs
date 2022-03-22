@@ -79,7 +79,6 @@ const MyCart = () => {
                 sx={{
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center",
                 }}
               >
                 <Box sx={{ textAlign: "center" }}>
