@@ -47,7 +47,7 @@ const Product = (props) => {
       wifi: description.wiFi,
       remote: description.remote,
     };
-    fetch("http://localhost:5000/cart", {
+    fetch("https://glacial-earth-66001.herokuapp.com/cart", {
       method: "POST",
       headers: {
         "content-type": "application/json",

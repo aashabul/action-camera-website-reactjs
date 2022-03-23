@@ -15,7 +15,7 @@ const CartItemDetails = () => {
   const [cartItem, setCartItem] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/cart")
+    fetch("https://glacial-earth-66001.herokuapp.com/cart")
       .then((res) => res.json())
       .then((data) => setCartItem(data.filter((cart) => cart._id === id)));
   }, []);

@@ -37,7 +37,7 @@ const AddReview = () => {
       image: image,
       date: currentDate,
     };
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://glacial-earth-66001.herokuapp.com/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",

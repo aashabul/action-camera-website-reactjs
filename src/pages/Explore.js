@@ -21,7 +21,7 @@ const Explore = () => {
     // setTimeout(() => {
     //   setLoading(false);
     // }, 3000);
-    fetch("http://localhost:5000/products")
+    fetch("https://glacial-earth-66001.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => setProducts(data))
       .finally(() => setLoading(false));
@@ -29,7 +29,7 @@ const Explore = () => {
 
   useEffect(() => {
     let isMount = true;
-    fetch("http://localhost:5000/cart")
+    fetch("https://glacial-earth-66001.herokuapp.com/cart")
       .then((res) => res.json())
       .then((data) => {
         if (isMount) {

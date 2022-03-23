@@ -20,7 +20,7 @@ const Navigation = () => {
 
   useEffect(() => {
     let isMount = true;
-    fetch("http://localhost:5000/cart")
+    fetch("https://glacial-earth-66001.herokuapp.com/cart")
       .then((res) => res.json())
       .then((data) => {
         if (isMount) {

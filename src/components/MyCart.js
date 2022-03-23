@@ -26,7 +26,7 @@ const MyCart = () => {
 
   useEffect(() => {
     let isMount = true;
-    fetch("http://localhost:5000/cart")
+    fetch("https://glacial-earth-66001.herokuapp.com/cart")
       .then((res) => res.json())
       .then((data) => {
         if (isMount) {
@@ -59,7 +59,7 @@ const MyCart = () => {
 
   //delete order
   const handleDeleteOrder = (id) => {
-    fetch(`http://localhost:5000/cart/${id}`, {
+    fetch(`https://glacial-earth-66001.herokuapp.com/cart/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
