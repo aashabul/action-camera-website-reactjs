@@ -14,6 +14,7 @@ import MyCart from "./components/MyCart";
 import MyReviews from "./components/MyReviews";
 import MyWishlist from "./components/MyWishlist";
 import Details from "./pages/Details";
+import CartItemDetails from "./components/CartItemDetails";
 
 function App() {
   return (
@@ -67,6 +68,14 @@ function App() {
               element={
                 <PrivateRoute>
                   <MyCart />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="cart/details/:id"
+              element={
+                <PrivateRoute>
+                  <CartItemDetails />
                 </PrivateRoute>
               }
             />

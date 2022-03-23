@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import {
   Button,
   Card,
+  CardActionArea,
   CardContent,
   Container,
   Grid,
@@ -16,10 +17,12 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { Box } from "@mui/system";
+import { useNavigate } from "react-router-dom";
 
 const MyCart = () => {
   const { user } = useAuth();
   const [cart, setCart] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     let isMount = true;
@@ -34,6 +37,11 @@ const MyCart = () => {
       isMount = false;
     };
   }, [user.email]);
+
+  //show product details
+  const handleDetails = (id) => {
+    navigate(`details/${id}`);
+  };
 
   //counts total price from cart array
   const showTotalPrice = () => {
@@ -76,13 +84,18 @@ const MyCart = () => {
                   alignItems: "center",
                 }}
               >
-                <Box sx={{ textAlign: "center" }}>
-                  <img
-                    style={{ width: "70%" }}
-                    src={cart.img}
-                    alt={cart.name}
-                  />
-                </Box>
+                <CardActionArea
+                  onClick={() => handleDetails(cart._id)}
+                  sx={{ width: "250px" }}
+                >
+                  <Box sx={{ textAlign: "center" }}>
+                    <img
+                      style={{ width: "70%" }}
+                      src={cart.img}
+                      alt={cart.name}
+                    />
+                  </Box>
+                </CardActionArea>
                 <Box>
                   <Typography variant="h6">{cart.name}</Typography>
                   <Typography

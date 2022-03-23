@@ -55,10 +55,10 @@ const AddReview = () => {
   };
 
   return (
-    <Container>
+    <Container sx={{ my: 5 }}>
       <form onSubmit={handleAddReview}>
         <Grid container>
-          <Grid item sx={{ gap: 1.5 }} lg={6} md={6} sm={12} xs={12}>
+          <Grid item sx={{ gap: 1.5 }} lg={5} md={5} sm={12} xs={12}>
             <Box>
               <Typography variant="h6">Name</Typography>
               <input
@@ -66,7 +66,7 @@ const AddReview = () => {
                 type="text"
                 defaultValue={user.displayName}
                 disabled
-                style={{ width: "50%", fontSize: "17px" }}
+                style={{ fontSize: "17px", padding: "5px" }}
               />
             </Box>
             <Box sx={{ my: 2 }}>
@@ -76,19 +76,21 @@ const AddReview = () => {
                 type="email"
                 defaultValue={user.email}
                 disabled
-                style={{ width: "50%", fontSize: "17px" }}
+                style={{ fontSize: "17px", padding: "5px" }}
               />
             </Box>
             <Box sx={{ my: 2 }}>
-              <Typography variant="h6">Photo URL</Typography>
               {user.photoURL ? (
-                <input
-                  type="text"
-                  ref={imageRef}
-                  defaultValue={user.photoURL}
-                  disabled
-                  style={{ width: "50%", fontSize: "17px" }}
-                />
+                <>
+                  <Typography variant="h6">Photo URL</Typography>
+                  <input
+                    type="text"
+                    ref={imageRef}
+                    defaultValue={user.photoURL}
+                    disabled
+                    style={{ fontSize: "17px", padding: "5px" }}
+                  />
+                </>
               ) : (
                 <>
                   <Typography variant="h6">Photo URL (optional)</Typography>
@@ -96,7 +98,7 @@ const AddReview = () => {
                     type="text"
                     ref={imageRef}
                     defaultValue={user.photoURL}
-                    style={{ width: "50%", fontSize: "17px" }}
+                    style={{ fontSize: "17px", padding: "5px" }}
                   />
                 </>
               )}
@@ -107,11 +109,11 @@ const AddReview = () => {
                 type="text"
                 defaultValue={currentDate}
                 disabled
-                style={{ width: "50%", fontSize: "17px" }}
+                style={{ fontSize: "17px", padding: "5px" }}
               />
             </Box>
           </Grid>
-          <Grid item sx={{ gap: 2 }} lg={6} md={6} sm={12} xs={12}>
+          <Grid item sx={{ gap: 2 }} lg={7} md={7} sm={12} xs={12}>
             <Box>
               <Typography variant="h6">Give your rating</Typography>
               <Rating
