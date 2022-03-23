@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
 import Divider from "@mui/material/Divider";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import {
   Button,
@@ -70,7 +65,7 @@ const MyCart = () => {
   };
 
   return (
-    <Container>
+    <>
       <Grid container gap={5}>
         <Grid item lg={7} md={7} sm={12} xs={12}>
           {cart.map((cart, index) => (
@@ -128,72 +123,6 @@ const MyCart = () => {
               </Box>
               <Divider variant="middle" />
             </Box>
-
-            // <List
-            //   key={index}
-            //   sx={{
-            //     width: "100%",
-            //     maxWidth: 360,
-            //     bgcolor: "background.paper",
-            //     my: 3,
-            //   }}
-            // >
-            //   <ListItem alignItems="flex-start">
-            //     <ListItemAvatar>
-            //       <Avatar alt={cart.name} src={cart.img} />
-            //     </ListItemAvatar>
-            //     <ListItemText
-            //       primary={cart.name}
-            //       secondary={
-            //         <React.Fragment>
-            //           <Typography
-            //             sx={{ display: "inline" }}
-            //             component="span"
-            //             variant="body2"
-            //             color="text.primary"
-            //           >
-            //             price: $ {cart.price}
-            //           </Typography>
-            //           <>
-            //             <IconButton>
-            //               <AddIcon />
-            //             </IconButton>
-            //             <input type="number" style={{ width: "50px" }} />
-            //             <IconButton>
-            //               <RemoveIcon />
-            //             </IconButton>
-            //           </>
-            //           <Typography
-            //             sx={{ display: "block" }}
-            //             component="span"
-            //             variant="body2"
-            //             color="text.secondary"
-            //           >
-            //             color: {cart.color}
-            //           </Typography>
-            //           <>
-            //             <Tooltip title="add to wishlist">
-            //               <IconButton
-            //                 sx={{ mr: 5 }}
-            //                 onClick={handleAddWishlist}
-            //               >
-            //                 <FavoriteBorderIcon />
-            //               </IconButton>
-            //             </Tooltip>
-            //             <Tooltip title="delete from cart">
-            //               <IconButton
-            //                 onClick={() => handleDeleteOrder(cart._id)}
-            //               >
-            //                 <DeleteForeverIcon />
-            //               </IconButton>
-            //             </Tooltip>
-            //           </>
-            //         </React.Fragment>
-            //       }
-            //     />
-            //   </ListItem>
-            //   <Divider variant="middle" component="li" />
-            // </List>
           ))}
         </Grid>
         <Grid item lg={4} md={4} sm={12} xs={12} sx={{ mt: 5 }}>
@@ -221,7 +150,7 @@ const MyCart = () => {
           </Card>
         </Grid>
       </Grid>
-    </Container>
+    </>
   );
 };
 

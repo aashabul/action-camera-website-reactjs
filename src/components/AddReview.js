@@ -1,4 +1,4 @@
-import { Container, Grid, Button } from "@mui/material";
+import { Container, Grid, Button, Box, Typography } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import Rating from "@mui/material/Rating";
 import useAuth from "../hooks/useAuth";
@@ -55,36 +55,91 @@ const AddReview = () => {
   };
 
   return (
-    <div>
+    <Container>
       <form onSubmit={handleAddReview}>
-        <textarea
-          ref={commentRef}
-          cols="30"
-          rows="10"
-          placeholder="write review"
-        ></textarea>
-        <input
-          ref={nameRef}
-          type="text"
-          defaultValue={user.displayName}
-          disabled
-        />
-        <input ref={emailRef} type="email" defaultValue={user.email} disabled />
-        <input type="text" ref={imageRef} defaultValue={user.photoURL} />
-        <input type="text" defaultValue={currentDate} disabled />
-        <Rating
-          name="simple-controlled"
-          value={value}
-          onChange={(event, newValue) => {
-            setValue(newValue);
-          }}
-        />
-
-        <Button type="submit" variant="contained">
-          Submit
-        </Button>
+        <Grid container>
+          <Grid item sx={{ gap: 1.5 }} lg={6} md={6} sm={12} xs={12}>
+            <Box>
+              <Typography variant="h6">Name</Typography>
+              <input
+                ref={nameRef}
+                type="text"
+                defaultValue={user.displayName}
+                disabled
+                style={{ width: "50%", fontSize: "17px" }}
+              />
+            </Box>
+            <Box sx={{ my: 2 }}>
+              <Typography variant="h6">Email</Typography>
+              <input
+                ref={emailRef}
+                type="email"
+                defaultValue={user.email}
+                disabled
+                style={{ width: "50%", fontSize: "17px" }}
+              />
+            </Box>
+            <Box sx={{ my: 2 }}>
+              <Typography variant="h6">Photo URL</Typography>
+              {user.photoURL ? (
+                <input
+                  type="text"
+                  ref={imageRef}
+                  defaultValue={user.photoURL}
+                  disabled
+                  style={{ width: "50%", fontSize: "17px" }}
+                />
+              ) : (
+                <>
+                  <Typography variant="h6">Photo URL (optional)</Typography>
+                  <input
+                    type="text"
+                    ref={imageRef}
+                    defaultValue={user.photoURL}
+                    style={{ width: "50%", fontSize: "17px" }}
+                  />
+                </>
+              )}
+            </Box>
+            <Box>
+              <Typography variant="h6">Date</Typography>
+              <input
+                type="text"
+                defaultValue={currentDate}
+                disabled
+                style={{ width: "50%", fontSize: "17px" }}
+              />
+            </Box>
+          </Grid>
+          <Grid item sx={{ gap: 2 }} lg={6} md={6} sm={12} xs={12}>
+            <Box>
+              <Typography variant="h6">Give your rating</Typography>
+              <Rating
+                name="simple-controlled"
+                value={value}
+                size="large"
+                onChange={(event, newValue) => {
+                  setValue(newValue);
+                }}
+              />
+            </Box>
+            <Box sx={{ my: 2 }}>
+              <Typography variant="h6">Write your review</Typography>
+              <textarea
+                ref={commentRef}
+                cols="40"
+                rows="10"
+                placeholder="write review"
+                style={{ fontSize: "17px" }}
+              ></textarea>
+            </Box>
+            <Button type="submit" variant="contained">
+              Submit
+            </Button>
+          </Grid>
+        </Grid>
       </form>
-    </div>
+    </Container>
   );
 };
 
