@@ -21,7 +21,7 @@ const Reviews = () => {
       <Grid container gap={2}>
         {info.map((review, index) => (
           <Grid key={index} item md={3.8} sm={12} xs={12}>
-            <Card key={index} sx={{ alignSelf: "center" }}>
+            <Card key={index} sx={{ alignSelf: "center", minHeight: "230px" }}>
               <CardContent
                 sx={{
                   minHeight: "28vh",
