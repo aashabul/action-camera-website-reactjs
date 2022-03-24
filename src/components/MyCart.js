@@ -17,7 +17,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { Box } from "@mui/system";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const MyCart = () => {
   const { user } = useAuth();
@@ -51,7 +51,15 @@ const MyCart = () => {
     }
     return total;
   };
-  showTotalPrice();
+  // shipping price
+  const showShippingPrice = () => {
+    let shipping = 50;
+    return shipping;
+  };
+
+  const showPayablePrice = () => {
+    return showTotalPrice() + showShippingPrice();
+  };
 
   const handleAddWishlist = (e) => {
     console.log("added to wishlist");
@@ -153,12 +161,29 @@ const MyCart = () => {
               <Divider variant="full" />
               <Typography variant="h6" sx={{ py: 1 }}>
                 Shipping{" = "}
-                <span style={{ color: "green" }}>$ {showTotalPrice()} </span>
+                <span style={{ color: "green" }}>$ {showShippingPrice()} </span>
               </Typography>
               <Divider variant="full" />
-              <Button variant="contained" sx={{ background: "#8C6897", py: 1 }}>
-                Go to Shipping Page
-              </Button>
+              <Typography variant="h6" sx={{ py: 1 }}>
+                Payable Price{" = "}
+                <span style={{ color: "green", textAlign: "right" }}>
+                  $ {showPayablePrice()}{" "}
+                </span>
+              </Typography>
+              <Divider variant="full" />
+
+              {!cart.length == 0 && (
+                <Box sx={{ mt: 4 }}>
+                  <Link to="shipping" style={{ textDecoration: "none" }}>
+                    <Button
+                      variant="contained"
+                      sx={{ background: "#8C6897", py: 1 }}
+                    >
+                      Go to Shipping Page
+                    </Button>
+                  </Link>
+                </Box>
+              )}
             </CardContent>
           </Card>
         </Grid>

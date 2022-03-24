@@ -15,6 +15,7 @@ import MyReviews from "./components/MyReviews";
 import MyWishlist from "./components/MyWishlist";
 import Details from "./pages/Details";
 import CartItemDetails from "./components/CartItemDetails";
+import Shipping from "./pages/Shipping";
 
 function App() {
   return (
@@ -54,7 +55,7 @@ function App() {
                   <MyCart />
                 </PrivateRoute>
               }
-            ></Route>
+            />
             <Route
               path="cart"
               element={
@@ -109,6 +110,22 @@ function App() {
               element={
                 <PrivateRoute>
                   <MyWishlist />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="cart/shipping"
+              element={
+                <PrivateRoute>
+                  <Shipping />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="shipping"
+              element={
+                <PrivateRoute>
+                  <Shipping />
                 </PrivateRoute>
               }
             />
