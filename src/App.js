@@ -114,6 +114,14 @@ function App() {
               }
             />
             <Route
+              path="wishlist/:id"
+              element={
+                <PrivateRoute>
+                  <MyWishlist />
+                </PrivateRoute>
+              }
+            />
+            <Route
               path="cart/shipping"
               element={
                 <PrivateRoute>

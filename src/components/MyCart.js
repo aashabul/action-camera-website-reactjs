@@ -2,20 +2,9 @@ import React, { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
-import {
-  Button,
-  Card,
-  CardActionArea,
-  CardContent,
-  Container,
-  Grid,
-  IconButton,
-  Tooltip,
-} from "@mui/material";
+import { Button, Card, CardActionArea, CardContent, Grid } from "@mui/material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
 import { Box } from "@mui/system";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -172,7 +161,7 @@ const MyCart = () => {
               </Typography>
               <Divider variant="full" />
 
-              {!cart.length == 0 && (
+              {!cart.length === 0 && (
                 <Box sx={{ mt: 4 }}>
                   <Link to="shipping" style={{ textDecoration: "none" }}>
                     <Button

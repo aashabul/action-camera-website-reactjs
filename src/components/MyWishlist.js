@@ -3,16 +3,7 @@ import useAuth from "../hooks/useAuth";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import { Box } from "@mui/system";
-import {
-  Button,
-  Card,
-  CardActionArea,
-  CardContent,
-  Container,
-  Grid,
-  IconButton,
-  Tooltip,
-} from "@mui/material";
+import { CardActionArea, Grid } from "@mui/material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
@@ -32,7 +23,22 @@ const MyWishlist = () => {
     return () => {
       isMount = false;
     };
-  }, []);
+  }, [user.email]);
+
+  //delete item from wishlist
+  const handleDeleteWishlist = (id) => {
+    fetch(`https://glacial-earth-66001.herokuapp.com/wishlist/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          alert("deleted successfully");
+          const newData = wishlist.filter((item) => item._id !== id);
+          setWishlist(newData);
+        }
+      });
+  };
 
   return (
     <Grid item lg={7} md={7} sm={12} xs={12}>
@@ -44,10 +50,7 @@ const MyWishlist = () => {
               alignItems: "center",
             }}
           >
-            <CardActionArea
-              // onClick={() => handleDetails(cart._id)}
-              sx={{ width: "250px" }}
-            >
+            <CardActionArea sx={{ width: "250px" }}>
               <Box sx={{ textAlign: "center" }}>
                 <img style={{ width: "70%" }} src={item.img} alt={item.name} />
               </Box>
@@ -60,7 +63,7 @@ const MyWishlist = () => {
 
               <Box sx={{ display: "flex", gap: 4, mt: 1 }}>
                 <Box
-                  // onClick={() => handleDeleteOrder(cart._id)}
+                  onClick={() => handleDeleteWishlist(item._id)}
                   sx={{
                     display: "flex",
                     cursor: "pointer",
