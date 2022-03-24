@@ -27,6 +27,7 @@ const Product = (props) => {
     navigate(`/details/${id}`);
   };
 
+  //post to cart database
   const handleAddtoCart = (e) => {
     const cart = {
       email: user.email,
@@ -47,6 +48,8 @@ const Product = (props) => {
       wifi: description.wiFi,
       remote: description.remote,
     };
+
+    //fetch items from cart
     fetch("https://glacial-earth-66001.herokuapp.com/cart", {
       method: "POST",
       headers: {
@@ -58,6 +61,42 @@ const Product = (props) => {
       .then((data) => {
         if (data.insertedId) {
           alert("successfully added to cart");
+        }
+      });
+  };
+
+  //post to wishlist
+  const handleWishlist = (e) => {
+    const wishlistItem = {
+      email: user.email,
+      img: img,
+      name: name,
+      price: price,
+      camera: description.camera,
+      video: description.video,
+      liveStreaming: description.liveStreaming,
+      mediaType: description.mediaType,
+      inputOutput: description.inputOutput,
+      exterlCard: description.externalCard,
+      viewAngle: description.viewAngle,
+      workingTime: description.workingTime,
+      battery: description.battery,
+      weight: description.weight,
+      color: description.color,
+      wifi: description.wiFi,
+      remote: description.remote,
+    };
+    fetch("https://glacial-earth-66001.herokuapp.com/wishlist", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(wishlistItem),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.insertedId) {
+          alert("successfully added to wishlist");
         }
       });
   };
@@ -132,6 +171,7 @@ const Product = (props) => {
 
           <Tooltip title="add to wishlist">
             <Button
+              onClick={handleWishlist}
               variant="contained"
               size="small"
               color="primary"

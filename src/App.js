@@ -79,6 +79,14 @@ function App() {
                 </PrivateRoute>
               }
             />
+            <Route
+              path="details/:id"
+              element={
+                <PrivateRoute>
+                  <CartItemDetails />
+                </PrivateRoute>
+              }
+            />
 
             <Route
               path="myReviews"
@@ -97,7 +105,7 @@ function App() {
               }
             />
             <Route
-              path="myWishlist"
+              path="wishlist"
               element={
                 <PrivateRoute>
                   <MyWishlist />

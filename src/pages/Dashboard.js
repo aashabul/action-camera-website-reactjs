@@ -50,7 +50,7 @@ function Dashboard(props) {
     navigate("/dashboard/addReview");
   };
   const handleWishlist = () => {
-    navigate("/dashboard/myWishlist");
+    navigate("/dashboard/wishlist");
   };
   const handleLogout = () => {
     handleSignOut();
