@@ -158,7 +158,7 @@ const Product = (props) => {
             </Button>
           </Tooltip>
 
-          <Tooltip title="compare">
+          {/* <Tooltip title="compare">
             <Button
               variant="contained"
               size="small"
@@ -167,7 +167,7 @@ const Product = (props) => {
             >
               <CompareArrowsIcon />
             </Button>
-          </Tooltip>
+          </Tooltip> */}
 
           <Tooltip title="add to wishlist">
             <Button

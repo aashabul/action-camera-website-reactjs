@@ -50,9 +50,9 @@ const MyCart = () => {
     return showTotalPrice() + showShippingPrice();
   };
 
-  const handleAddWishlist = (e) => {
-    console.log("added to wishlist");
-  };
+  // const handleAddWishlist = (e) => {
+  //   console.log("added to wishlist");
+  // };
 
   //delete order
   const handleDeleteOrder = (id) => {
@@ -116,7 +116,7 @@ const MyCart = () => {
                       <Typography>Delete</Typography>
                     </Box>
 
-                    <Box
+                    {/* <Box
                       onClick={handleAddWishlist}
                       sx={{
                         display: "flex",
@@ -127,7 +127,7 @@ const MyCart = () => {
                     >
                       <FavoriteBorderIcon />
                       <Typography>Wishlist</Typography>
-                    </Box>
+                    </Box> */}
                   </Box>
                 </Box>
               </Box>
@@ -161,7 +161,7 @@ const MyCart = () => {
               </Typography>
               <Divider variant="full" />
 
-              {!cart.length === 0 && (
+              {!cart.length == 0 && (
                 <Box sx={{ mt: 4 }}>
                   <Link to="shipping" style={{ textDecoration: "none" }}>
                     <Button

@@ -75,7 +75,7 @@ const MyWishlist = () => {
                   <Typography>Delete</Typography>
                 </Box>
 
-                <Box
+                {/* <Box
                   // onClick={handleAddWishlist}
                   sx={{
                     display: "flex",
@@ -86,7 +86,7 @@ const MyWishlist = () => {
                 >
                   <AddShoppingCartIcon />
                   <Typography>Send to cart</Typography>
-                </Box>
+                </Box> */}
               </Box>
             </Box>
           </Box>
