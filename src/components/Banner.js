@@ -91,7 +91,7 @@ const Banner = () => {
               md={6}
               sm={12}
               xs={12}
-              sx={{ my: 3 }}
+              // sx={{ my: 3 }}
               sx={{
                 alignItems: "center",
                 justifyContent: "center",

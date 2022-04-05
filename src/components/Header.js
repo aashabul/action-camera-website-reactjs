@@ -15,23 +15,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LogoutIcon from "@mui/icons-material/Logout";
 
 const Navigation = () => {
-  const [cart, setCart] = useState(0);
   const { user, handleSignOut } = useAuth();
-
-  useEffect(() => {
-    let isMount = true;
-    fetch("https://glacial-earth-66001.herokuapp.com/cart")
-      .then((res) => res.json())
-      .then((data) => {
-        if (isMount) {
-          let result = data.filter((cart) => cart.email === user.email);
-          setCart(result.length);
-        }
-      });
-    return () => {
-      isMount = false;
-    };
-  });
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -199,7 +183,7 @@ const Navigation = () => {
                 </NavLink>
               )}
 
-              {user.email && (
+              {/* {user.email && (
                 <NavLink
                   to="/dashboard/cart"
                   style={{ textDecoration: "none" }}
@@ -218,11 +202,11 @@ const Navigation = () => {
                         fontSize: "14px",
                       }}
                     >
-                      {cart}
+                      {cart.length}
                     </Typography>
                   </Button>
                 </NavLink>
-              )}
+              )} */}
 
               {user?.email ? (
                 <Button

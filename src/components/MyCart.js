@@ -43,6 +43,9 @@ const MyCart = () => {
   // shipping price
   const showShippingPrice = () => {
     let shipping = 50;
+    if (cart.length < 1) {
+      return (shipping = 0);
+    }
     return shipping;
   };
 

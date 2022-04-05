@@ -3,15 +3,16 @@ import React, { useEffect, useState } from "react";
 import Rating from "@mui/material/Rating";
 import { Box } from "@mui/system";
 import AccountCircle from "@mui/icons-material/AccountCircle";
+import useAuth from "../hooks/useAuth";
 
 const Reviews = () => {
-  const [info, setInfo] = useState([]);
+  const { info } = useAuth();
 
-  useEffect(() => {
-    fetch("https://glacial-earth-66001.herokuapp.com/reviews")
-      .then((res) => res.json())
-      .then((data) => setInfo(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("https://glacial-earth-66001.herokuapp.com/reviews")
+  //     .then((res) => res.json())
+  //     .then((data) => setInfo(data));
+  // }, []);
 
   return (
     <Container sx={{ my: 5 }}>
