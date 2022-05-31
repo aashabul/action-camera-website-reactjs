@@ -6,9 +6,9 @@ const Footer = () => {
   return (
     <Box
       sx={{
-        background: "#8C6897",
+        background: "#3D3D3D",
         // color: "#1F1F1F",
-        color: "#1F1F1F",
+        color: "#ffffff",
       }}
     >
       <Container sx={{ pt: 5, pb: 3 }}>
