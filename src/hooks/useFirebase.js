@@ -22,7 +22,7 @@ const useFirebase = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [registered, setRegistered] = useState(false);
-  const [cart, setCart] = useState([]);
+  const [products, setProducts] = useState([]);
   const [info, setInfo] = useState([]);
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
@@ -175,13 +175,14 @@ const useFirebase = () => {
     return () => unsubscribe;
   }, []);
 
+  //loads all the products
   useEffect(() => {
     let isMount = true;
-    fetch("https://glacial-earth-66001.herokuapp.com/cart")
+    fetch("https://glacial-earth-66001.herokuapp.com/products")
       .then((res) => res.json())
       .then((data) => {
         if (isMount) {
-          setCart(data.filter((cart) => cart.email === user.email));
+          setProducts(data);
         }
       });
     return () => {
@@ -189,6 +190,7 @@ const useFirebase = () => {
     };
   }, [user.email]);
 
+  //loads all the reviews
   useEffect(() => {
     fetch("https://glacial-earth-66001.herokuapp.com/reviews")
       .then((res) => res.json())
@@ -202,15 +204,13 @@ const useFirebase = () => {
     signInWithGithub,
     signInWithFacebook,
     loginUser,
-    // handleEmail,
-    // handlePass,
     handleSignOut,
     registered,
     error,
     success,
     loading,
-    cart,
     info,
+    products,
   };
 };
 

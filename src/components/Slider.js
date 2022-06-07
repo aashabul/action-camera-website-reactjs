@@ -29,7 +29,6 @@ const Slider = () => {
         </Typography>
         <motion.div
           ref={slider}
-          className="slider"
           whileTap={{ cursor: "grabbing" }}
           style={{
             cursor: "grab",
@@ -39,17 +38,11 @@ const Slider = () => {
         >
           <motion.div
             drag="x"
-            //   left: -1750
             dragConstraints={{ right: 0, left: -width }}
-            className="inner-slider"
             style={{ display: "flex" }}
           >
             {info.map((review, index) => (
-              <motion.div
-                className="item"
-                style={{ padding: "20px" }}
-                key={index}
-              >
+              <motion.div style={{ padding: "20px" }} key={index}>
                 <Card
                   key={index}
                   sx={{

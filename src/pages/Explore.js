@@ -4,27 +4,10 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Product from "../components/Product";
 import Loading from "../components/IsLoading";
-// import Fab from "@mui/material/Fab";
 import useAuth from "../hooks/useAuth";
-// import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-// import { Link } from "react-router-dom";
-// import { Box } from "@mui/system";
 
 const Explore = () => {
-  const { user } = useAuth();
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    setLoading(true);
-    // setTimeout(() => {
-    //   setLoading(false);
-    // }, 3000);
-    fetch("https://glacial-earth-66001.herokuapp.com/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data))
-      .finally(() => setLoading(false));
-  }, []);
+  const { user, products, loading } = useAuth();
 
   return (
     <div>
