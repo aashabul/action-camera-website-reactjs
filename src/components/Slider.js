@@ -34,7 +34,7 @@ const Slider = () => {
             letterSpacing: "0.17rem",
           }}
         >
-          <span style={{ color: "#0096c7" }}>Customer </span>{" "}
+          <span style={{ color: "#0096c7" }}>Consumer</span>{" "}
           <span style={{ color: "#023e8a" }}>Review</span>
         </Typography>
         <motion.div

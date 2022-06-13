@@ -13,7 +13,7 @@ const Banner = () => {
           background: "#C29CCD",
           minHeight: "75vh",
           display: "flex",
-          // justifyContent: "center",
+          justifyContent: "center",
           alignItems: "center",
         }}
       >
@@ -27,38 +27,42 @@ const Banner = () => {
               xs={12}
             >
               <Typography
-                variant="h2"
+                variant="h1"
                 sx={{
                   textShadow: "4px 5px 8px #666666",
-                  WebkitTextFillColor: "#292929",
                   mb: 2,
+                  fontSize: "5rem",
                 }}
               >
-                HERO 10
+                <span style={{ color: "#292929" }}>HERO</span>{" "}
+                <span style={{ color: "#012e65" }}>10</span>
               </Typography>
 
-              <Typography variant="h5" sx={{ color: "#525252" }}>
+              <Typography
+                variant="h5"
+                sx={{
+                  color: "#333533",
+                  fontSize: "1.8rem",
+                }}
+              >
                 Sweet Savings. Limited time only.
               </Typography>
               <Box
                 sx={{
                   fontFamily: "Roboto",
-                  fontSize: "1.4rem",
-                  color: "#474747",
+                  fontSize: "1.8rem",
+                  color: "#1b4332",
+                  marginTop: "0.7rem",
                 }}
               >
                 <TypewriterComponent
                   options={{ loop: true, delay: 45 }}
                   onInit={(typewriter) => {
                     typewriter
-                      .typeString(
-                        "Capture every valuable moments of your life."
-                      )
+                      .typeString("Capture every valuable moments.")
                       .pauseFor(3000)
                       .deleteAll()
-                      .typeString(
-                        "Get the experience of the upcoming features."
-                      )
+                      .typeString("Experience the upcoming features.")
                       .pauseFor(3000)
                       .deleteAll()
                       .typeString("Be the HERO of your own world.")
@@ -76,8 +80,11 @@ const Banner = () => {
                       background: "#8C6897",
                       boxShadow: "5px 10px 8px #525252",
                       fontWeight: 600,
-                      fontSize: "0.9rem",
-                      letterSpacing: 2,
+                      fontSize: "1.2rem",
+                      letterSpacing: 2.5,
+                      marginTop: "1.5rem",
+                      paddingTop: "0.8rem",
+                      paddingBottom: "0.8rem",
                     }}
                   >
                     Explore shop
