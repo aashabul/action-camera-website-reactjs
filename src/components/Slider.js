@@ -23,9 +23,19 @@ const Slider = () => {
   });
   return (
     <Box>
-      <Box sx={{ margin: "0 4%", alignSelf: "center", padding: "5% 0" }}>
-        <Typography variant="h5" sx={{ textAlign: "center", mb: 3 }}>
-          Customer Reviews
+      <Box sx={{ margin: "0 4%", alignSelf: "center", padding: "3% 0" }}>
+        <Typography
+          variant="h5"
+          sx={{
+            textAlign: "center",
+            mb: 3,
+            fontSize: "1.7rem",
+            fontWeight: "600",
+            letterSpacing: "0.17rem",
+          }}
+        >
+          <span style={{ color: "#0096c7" }}>Customer </span>{" "}
+          <span style={{ color: "#023e8a" }}>Review</span>
         </Typography>
         <motion.div
           ref={slider}
@@ -52,8 +62,8 @@ const Slider = () => {
                 >
                   <CardContent
                     sx={{
-                      minWidth: "20rem",
-                      minHeight: "15rem",
+                      minWidth: "22rem",
+                      minHeight: "12rem",
                       display: "flex",
                       flexDirection: "column",
                       justifyContent: "center",

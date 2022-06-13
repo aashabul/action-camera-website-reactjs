@@ -11,7 +11,7 @@ const Banner = () => {
       <Box
         sx={{
           background: "#C29CCD",
-          minHeight: "70vh",
+          minHeight: "75vh",
           display: "flex",
           // justifyContent: "center",
           alignItems: "center",
