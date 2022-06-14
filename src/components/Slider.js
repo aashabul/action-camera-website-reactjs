@@ -28,7 +28,7 @@ const Slider = () => {
           variant="h5"
           sx={{
             textAlign: "center",
-            mb: 3,
+            mb: 7,
             fontSize: "1.7rem",
             fontWeight: "600",
             letterSpacing: "0.17rem",
