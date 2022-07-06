@@ -15,7 +15,7 @@ const Gallery = () => {
         padding: "5rem 0",
         backgroundColor: "#f8f9fa",
         width: "100vw",
-        overflow: "hidden",
+        overflowX: "hidden",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -23,6 +23,7 @@ const Gallery = () => {
       }}
     >
       <Typography
+        id="gallery-header"
         variant="h5"
         sx={{
           textAlign: "center",
@@ -92,6 +93,7 @@ const Gallery = () => {
                 }}
               >
                 <Typography
+                  id="product-name"
                   variant="h6"
                   sx={{
                     textAlign: "center",

@@ -4,6 +4,7 @@ import TypewriterComponent from "typewriter-effect";
 import Roboto from "@fontsource/roboto/500.css";
 import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
+import "../Banner.css";
 
 const Banner = () => {
   return (
@@ -27,6 +28,7 @@ const Banner = () => {
               xs={12}
             >
               <Typography
+                id="banner-header"
                 variant="h1"
                 sx={{
                   textShadow: "4px 5px 8px #666666",
@@ -39,6 +41,7 @@ const Banner = () => {
               </Typography>
 
               <Typography
+                id="banner-text"
                 variant="h5"
                 sx={{
                   color: "#333533",
@@ -48,6 +51,7 @@ const Banner = () => {
                 Sweet Savings. Limited time only.
               </Typography>
               <Box
+                id="typewriter"
                 sx={{
                   fontFamily: "Roboto",
                   fontSize: "1.8rem",
@@ -72,9 +76,10 @@ const Banner = () => {
                 />
               </Box>
 
-              <Box sx={{ mt: 2 }}>
+              <Box sx={{ mt: 2 }} id="banner-container">
                 <Link to="/explore" style={{ textDecoration: "none" }}>
                   <Button
+                    id="banner-button"
                     variant="contained"
                     sx={{
                       background: "#8C6897",
@@ -106,6 +111,7 @@ const Banner = () => {
               }}
             >
               <img
+                id="banner-img"
                 width="100%"
                 // height="100%"
                 src="https://i.ibb.co/TBVyGNg/hp-hero6-product-desktop.png"

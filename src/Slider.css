@@ -1,0 +1,15 @@
+@media only screen and (max-width:500px){
+    #card-content{
+       min-width:200px;
+    }
+    #review-container{
+        padding-right: unset;
+        padding-left:unset;
+    }
+    #slider-header{
+        font-size:1.5rem;
+    }
+    #product-name{
+        font-size:1.2rem;
+    }
+}

@@ -4,6 +4,7 @@ import Rating from "@mui/material/Rating";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { motion } from "framer-motion";
 import useAuth from "../hooks/useAuth";
+import "../Slider.css";
 
 const Slider = () => {
   const { info } = useAuth();
@@ -16,6 +17,7 @@ const Slider = () => {
   return (
     <Box>
       <Box
+        id="review-container"
         sx={{
           paddingTop: "20px",
           paddingRight: "50px",
@@ -31,6 +33,7 @@ const Slider = () => {
         }}
       >
         <Typography
+          id="slider-header"
           variant="h5"
           sx={{
             textAlign: "center",
@@ -67,6 +70,7 @@ const Slider = () => {
                   }}
                 >
                   <CardContent
+                    id="card-content"
                     sx={{
                       minWidth: "22rem",
                       minHeight: "12rem",

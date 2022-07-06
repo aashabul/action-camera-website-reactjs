@@ -13,6 +13,10 @@
 
 
 @media only screen and (max-width: 1000px){
+#gallery-header{
+    font-size:1.5rem;
+}
+
 #carousel{
     /* background-color: aliceblue; */
     width:'100%';
@@ -23,16 +27,17 @@
     flex-direction: column;
     min-height: unset;
     min-width:"500px";
+   
 }
 #carousel-text{
     font-size:14px;
-   
 }
 
 #carousel-info{
     padding:unset;
     margin:unset;
     font-size: 14px;
+    padding-left:10px;
 }
 
 

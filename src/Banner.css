@@ -1,0 +1,25 @@
+@media only screen and (max-width:600px){
+    #banner-header{
+        font-size: 3rem;
+        text-align: center;
+    }
+    #banner-text{
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    #typewriter{
+        display: none;
+    }
+    #banner-container{
+        display: flex;
+        justify-content: center;
+    }
+    #banner-button{
+        font-size:1rem;
+    }
+    #banner-img{
+        width:250px;
+        height:120px;
+        margin-top:40px;
+    }
+}
