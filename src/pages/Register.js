@@ -59,6 +59,7 @@ const Register = () => {
           width: "100vw",
           display: "flex",
           alignItems: "center",
+          padding: "50px 0",
         }}
       >
         <Grid container spacing={1}>
@@ -79,7 +80,7 @@ const Register = () => {
                 </Box>
               )}
               <TextField
-                sx={{ width: "60%", m: 1 }}
+                sx={{ width: "60%", m: 1, minWidth: "250px" }}
                 required
                 id="outlined-required1"
                 label="Name"
@@ -87,7 +88,7 @@ const Register = () => {
                 onBlur={handleOnBlur}
               />
               <TextField
-                sx={{ width: "60%", m: 1 }}
+                sx={{ width: "60%", m: 1, minWidth: "250px" }}
                 required
                 id="outlined-required2"
                 label="Email"
@@ -95,7 +96,7 @@ const Register = () => {
                 onBlur={handleOnBlur}
               />
               <TextField
-                sx={{ width: "60%", m: 1 }}
+                sx={{ width: "60%", m: 1, minWidth: "250px" }}
                 required
                 id="outlined-required3"
                 label="Password"
@@ -149,6 +150,7 @@ const Register = () => {
                   width: "50%",
                   py: 1.5,
                   alignSelf: "center",
+                  minWidth: "250px",
                 }}
                 variant="contained"
                 onClick={handleGoogleSignIn}
@@ -163,6 +165,7 @@ const Register = () => {
                   backgroundColor: "#000000",
                   width: "50%",
                   alignSelf: "center",
+                  minWidth: "250px",
                 }}
                 variant="contained"
                 onClick={handleGithubSignIn}
@@ -177,6 +180,7 @@ const Register = () => {
                   py: 1.5,
                   width: "50%",
                   alignSelf: "center",
+                  minWidth: "250px",
                 }}
                 variant="contained"
                 onClick={handleFacebookSignin}

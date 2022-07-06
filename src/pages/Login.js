@@ -64,6 +64,7 @@ const Login = () => {
           width: "100vw",
           display: "flex",
           alignItems: "center",
+          padding: "50px 0",
         }}
       >
         <Grid container spacing={1}>
@@ -84,7 +85,8 @@ const Login = () => {
                 </Box>
               )}
               <TextField
-                sx={{ width: "60%", m: 1 }}
+                className="login-input"
+                sx={{ width: "60%", m: 1, minWidth: "250px" }}
                 required
                 id="outlined-required"
                 label="Email"
@@ -92,7 +94,8 @@ const Login = () => {
                 onBlur={handleOnBlur}
               />
               <TextField
-                sx={{ width: "60%", m: 1 }}
+                // className="login-input"
+                sx={{ width: "60%", margin: "20px 0", minWidth: "250px" }}
                 required
                 id="outlined-required"
                 label="Password"
@@ -147,12 +150,14 @@ const Login = () => {
                 Or sign in with
               </Typography>
               <Button
+                className="login-button"
                 sx={{
                   my: 1,
                   backgroundColor: "#EA4335",
                   width: "50%",
                   py: 1.5,
                   alignSelf: "center",
+                  minWidth: "250px",
                 }}
                 variant="contained"
                 onClick={handleGoogleSignIn}
@@ -167,6 +172,7 @@ const Login = () => {
                   backgroundColor: "#000000",
                   width: "50%",
                   alignSelf: "center",
+                  minWidth: "250px",
                 }}
                 variant="contained"
                 onClick={handleGithubSignIn}
@@ -181,6 +187,7 @@ const Login = () => {
                   py: 1.5,
                   width: "50%",
                   alignSelf: "center",
+                  minWidth: "250px",
                 }}
                 variant="contained"
                 onClick={handleFacebookSignin}

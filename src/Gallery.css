@@ -11,6 +11,10 @@
     width:100%
 }
 
+#gallery-header{
+    margin-bottom: 3rem;
+}
+
 
 @media only screen and (max-width: 1000px){
 #gallery-header{
