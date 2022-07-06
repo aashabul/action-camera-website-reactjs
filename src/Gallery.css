@@ -1,0 +1,43 @@
+#img{
+    display: flex;
+    justify-content: center;
+}
+
+#carousel-text{
+    width:100%;
+    min-width:200px;
+}
+#carousel-inside{
+    width:100%
+}
+
+
+@media only screen and (max-width: 1000px){
+#carousel{
+    /* background-color: aliceblue; */
+    width:'100%';
+    min-width:370px;
+}
+
+#carousel-inside{
+    flex-direction: column;
+    min-height: unset;
+    min-width:"500px";
+}
+#carousel-text{
+    font-size:14px;
+   
+}
+
+#carousel-info{
+    padding:unset;
+    margin:unset;
+    font-size: 14px;
+}
+
+
+.rec.rec-arrow {
+    visibility: hidden;
+}
+
+}

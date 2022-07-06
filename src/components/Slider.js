@@ -1,14 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import {
-  Box,
-  Card,
-  CardContent,
-  Container,
-  Grid,
-  Typography,
-} from "@mui/material";
+import { Box, Card, CardContent, Typography } from "@mui/material";
 import Rating from "@mui/material/Rating";
-// import { Box } from "@mui/system";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import { motion } from "framer-motion";
 import useAuth from "../hooks/useAuth";
@@ -23,7 +15,21 @@ const Slider = () => {
   });
   return (
     <Box>
-      <Box sx={{ margin: "0 4%", alignSelf: "center", padding: "3% 0" }}>
+      <Box
+        sx={{
+          paddingTop: "20px",
+          paddingRight: "50px",
+          paddingBottom: "80px",
+          paddingLeft: "20px",
+          alignSelf: "center",
+          // padding: "3% 0",
+          backgroundColor: "#2d3142",
+          height: "60vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
         <Typography
           variant="h5"
           sx={{
@@ -35,7 +41,7 @@ const Slider = () => {
           }}
         >
           <span style={{ color: "#0096c7" }}>Consumer</span>{" "}
-          <span style={{ color: "#023e8a" }}>Review</span>
+          <span style={{ color: "orange" }}>Review</span>
         </Typography>
         <motion.div
           ref={slider}
@@ -57,7 +63,7 @@ const Slider = () => {
                   key={index}
                   sx={{
                     backgroundImage:
-                      "linear-gradient(135deg, #F5F5F5 49%, #13D5F2 100%)",
+                      "linear-gradient(140deg, #FFFFFF 50%, #dee2e6 100%)",
                   }}
                 >
                   <CardContent
