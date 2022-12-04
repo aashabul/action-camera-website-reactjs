@@ -50,7 +50,7 @@ const Product = (props) => {
     };
 
     //fetch items from cart
-    fetch("https://click-flick-api.onrender.com/cart", {
+    fetch("https://click-flick-camera-server-production.up.railway.app/cart", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -87,13 +87,16 @@ const Product = (props) => {
       wifi: description.wiFi,
       remote: description.remote,
     };
-    fetch("https://click-flick-api.onrender.com/wishlist", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(wishlistItem),
-    })
+    fetch(
+      "https://click-flick-camera-server-production.up.railway.app/wishlist",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(wishlistItem),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {

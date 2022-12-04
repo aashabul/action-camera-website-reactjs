@@ -13,7 +13,9 @@ const MyWishlist = () => {
 
   useEffect(() => {
     let isMount = true;
-    fetch("https://click-flick-api.onrender.com/wishlist")
+    fetch(
+      "https://click-flick-camera-server-production.up.railway.app/wishlist"
+    )
       .then((res) => res.json())
       .then((data) => {
         if (isMount) {
@@ -27,9 +29,12 @@ const MyWishlist = () => {
 
   //delete item from wishlist
   const handleDeleteWishlist = (id) => {
-    fetch(`https://click-flick-api.onrender.com/wishlist/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://click-flick-camera-server-production.up.railway.app/wishlist/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {

@@ -179,7 +179,9 @@ const useFirebase = () => {
   //loads all the products
   useEffect(() => {
     let isMount = true;
-    fetch("https://click-flick-api.onrender.com/products")
+    fetch(
+      "https://click-flick-camera-server-production.up.railway.app/products"
+    )
       .then((res) => res.json())
       .then((data) => {
         if (isMount) {
@@ -194,7 +196,7 @@ const useFirebase = () => {
   //load cart items
   useEffect(() => {
     let isMount = true;
-    fetch("https://click-flick-api.onrender.com/cart")
+    fetch("https://click-flick-camera-server-production.up.railway.app/cart")
       .then((res) => res.json())
       .then((data) => {
         if (isMount) {
@@ -208,7 +210,7 @@ const useFirebase = () => {
 
   //loads all the reviews
   useEffect(() => {
-    fetch("https://click-flick-api.onrender.com/reviews")
+    fetch("https://click-flick-camera-server-production.up.railway.app/reviews")
       .then((res) => res.json())
       .then((data) => setInfo(data));
   }, []);

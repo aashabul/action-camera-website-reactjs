@@ -15,7 +15,7 @@ const MyCart = () => {
 
   useEffect(() => {
     let isMount = true;
-    fetch("https://click-flick-api.onrender.com/cart")
+    fetch("https://click-flick-camera-server-production.up.railway.app/cart")
       .then((res) => res.json())
       .then((data) => {
         if (isMount) {
@@ -59,9 +59,12 @@ const MyCart = () => {
 
   //delete order
   const handleDeleteOrder = (id) => {
-    fetch(`https://click-flick-api.onrender.com/cart/${id}`, {
-      method: "DELETE",
-    })
+    fetch(
+      `https://click-flick-camera-server-production.up.railway.app/cart/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.deletedCount > 0) {

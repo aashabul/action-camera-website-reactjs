@@ -11,7 +11,7 @@ const MyReviews = () => {
 
   useEffect(() => {
     let isMount = true;
-    fetch(`https://click-flick-api.onrender.com/reviews`)
+    fetch(`https://click-flick-camera-server-production.up.railway.app/reviews`)
       .then((res) => res.json())
       .then((data) => {
         if (isMount) {
