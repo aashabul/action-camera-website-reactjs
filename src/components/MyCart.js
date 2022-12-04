@@ -9,13 +9,13 @@ import { Box } from "@mui/system";
 import { Link, useNavigate } from "react-router-dom";
 
 const MyCart = () => {
-  const { user } = useAuth();
-  const [cart, setCart] = useState([]);
+  const { user, cart, setCart } = useAuth();
+  // const [cart, setCart] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
     let isMount = true;
-    fetch("https://glacial-earth-66001.herokuapp.com/cart")
+    fetch("https://click-flick-api.onrender.com/cart")
       .then((res) => res.json())
       .then((data) => {
         if (isMount) {
@@ -59,7 +59,7 @@ const MyCart = () => {
 
   //delete order
   const handleDeleteOrder = (id) => {
-    fetch(`https://glacial-earth-66001.herokuapp.com/cart/${id}`, {
+    fetch(`https://click-flick-api.onrender.com/cart/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

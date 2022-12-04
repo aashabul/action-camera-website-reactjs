@@ -111,7 +111,6 @@ const Navigation = () => {
       </MenuItem>
 
       <MenuItem>
-        {/* onClick={handleProfileMenuOpen} */}
         {user.photoURL ? (
           <IconButton
             size="large"
@@ -176,14 +175,13 @@ const Navigation = () => {
               <NavLink to="/explore" style={{ textDecoration: "none" }}>
                 <Button sx={{ color: "white" }}>Explore</Button>
               </NavLink>
-
               {user.email && (
                 <NavLink to="/dashboard" style={{ textDecoration: "none" }}>
                   <Button sx={{ color: "white" }}>Dashboard</Button>
                 </NavLink>
               )}
 
-              {/* {user.email && (
+              {user.email && (
                 <NavLink
                   to="/dashboard/cart"
                   style={{ textDecoration: "none" }}
@@ -206,7 +204,7 @@ const Navigation = () => {
                     </Typography>
                   </Button>
                 </NavLink>
-              )} */}
+              )}
 
               {user?.email ? (
                 <Button
@@ -223,7 +221,7 @@ const Navigation = () => {
                   </NavLink>
                 </>
               )}
-
+              {/* //user photo */}
               <IconButton
                 size="large"
                 edge="end"
@@ -240,7 +238,7 @@ const Navigation = () => {
                       width: "30px",
                     }}
                     src={user.photoURL}
-                    alt="user"
+                    alt="photo"
                   />
                 ) : (
                   <AccountCircle />

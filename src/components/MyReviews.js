@@ -11,7 +11,7 @@ const MyReviews = () => {
 
   useEffect(() => {
     let isMount = true;
-    fetch(`https://glacial-earth-66001.herokuapp.com/reviews`)
+    fetch(`https://click-flick-api.onrender.com/reviews`)
       .then((res) => res.json())
       .then((data) => {
         if (isMount) {

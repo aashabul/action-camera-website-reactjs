@@ -1,5 +1,4 @@
 import { Container, Grid, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Product from "../components/Product";
@@ -7,7 +6,7 @@ import Loading from "../components/IsLoading";
 import useAuth from "../hooks/useAuth";
 
 const Explore = () => {
-  const { user, products, loading } = useAuth();
+  const { products, loading } = useAuth();
 
   return (
     <div>
@@ -19,17 +18,17 @@ const Explore = () => {
         >
           Choose The Best Cameras
         </Typography>
-        {loading ? (
+        {/* {loading ? (
           <Loading />
         ) : (
-          <>
-            <Grid container spacing={{ md: 2, xs: 3, lg: 6 }}>
-              {products.map((product, index) => (
-                <Product key={index} product={product}></Product>
-              ))}
-            </Grid>
-          </>
-        )}
+          <> */}
+        <Grid container spacing={{ md: 2, xs: 3, lg: 6 }}>
+          {products.map((product, index) => (
+            <Product key={index} product={product}></Product>
+          ))}
+        </Grid>
+        {/* </>
+        )} */}
       </Container>
       <Footer />
     </div>

@@ -13,7 +13,7 @@ const MyWishlist = () => {
 
   useEffect(() => {
     let isMount = true;
-    fetch("https://glacial-earth-66001.herokuapp.com/wishlist")
+    fetch("https://click-flick-api.onrender.com/wishlist")
       .then((res) => res.json())
       .then((data) => {
         if (isMount) {
@@ -27,7 +27,7 @@ const MyWishlist = () => {
 
   //delete item from wishlist
   const handleDeleteWishlist = (id) => {
-    fetch(`https://glacial-earth-66001.herokuapp.com/wishlist/${id}`, {
+    fetch(`https://click-flick-api.onrender.com/wishlist/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

@@ -19,7 +19,7 @@ import { Box } from "@mui/system";
 import useAuth from "../hooks/useAuth";
 
 const Product = (props) => {
-  const { user } = useAuth();
+  const { user, cart, setCart } = useAuth();
   const { name, description, img, price, _id } = props.product;
   const navigate = useNavigate();
 
@@ -29,7 +29,7 @@ const Product = (props) => {
 
   //post to cart database
   const handleAddtoCart = (e) => {
-    const cart = {
+    const newCart = {
       email: user.email,
       img: img,
       name: name,
@@ -50,16 +50,17 @@ const Product = (props) => {
     };
 
     //fetch items from cart
-    fetch("https://glacial-earth-66001.herokuapp.com/cart", {
+    fetch("https://click-flick-api.onrender.com/cart", {
       method: "POST",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(cart),
+      body: JSON.stringify(newCart),
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
+          setCart([...cart, newCart]);
           alert("successfully added to cart");
         }
       });
@@ -86,7 +87,7 @@ const Product = (props) => {
       wifi: description.wiFi,
       remote: description.remote,
     };
-    fetch("https://glacial-earth-66001.herokuapp.com/wishlist", {
+    fetch("https://click-flick-api.onrender.com/wishlist", {
       method: "POST",
       headers: {
         "content-type": "application/json",

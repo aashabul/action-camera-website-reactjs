@@ -24,6 +24,7 @@ const useFirebase = () => {
   const [registered, setRegistered] = useState(false);
   const [products, setProducts] = useState([]);
   const [info, setInfo] = useState([]);
+  const [cart, setCart] = useState([]);
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
   const facebookProvider = new FacebookAuthProvider();
@@ -45,8 +46,8 @@ const useFirebase = () => {
     }
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
-        //
+        // const user = userCredential.user;
+
         const newUser = { email, displayName: name };
         setUser(newUser);
         updateProfile(auth.currentUser, {
@@ -178,7 +179,7 @@ const useFirebase = () => {
   //loads all the products
   useEffect(() => {
     let isMount = true;
-    fetch("https://glacial-earth-66001.herokuapp.com/products")
+    fetch("https://click-flick-api.onrender.com/products")
       .then((res) => res.json())
       .then((data) => {
         if (isMount) {
@@ -190,9 +191,24 @@ const useFirebase = () => {
     };
   }, [user.email]);
 
+  //load cart items
+  useEffect(() => {
+    let isMount = true;
+    fetch("https://click-flick-api.onrender.com/cart")
+      .then((res) => res.json())
+      .then((data) => {
+        if (isMount) {
+          setCart(data.filter((cart) => cart.email === user.email));
+        }
+      });
+    return () => {
+      isMount = false;
+    };
+  }, [user.email]);
+
   //loads all the reviews
   useEffect(() => {
-    fetch("https://glacial-earth-66001.herokuapp.com/reviews")
+    fetch("https://click-flick-api.onrender.com/reviews")
       .then((res) => res.json())
       .then((data) => setInfo(data));
   }, []);
@@ -205,12 +221,14 @@ const useFirebase = () => {
     signInWithFacebook,
     loginUser,
     handleSignOut,
-    registered,
+    // registered,
     error,
     success,
     loading,
     info,
     products,
+    cart,
+    setCart,
   };
 };
 
